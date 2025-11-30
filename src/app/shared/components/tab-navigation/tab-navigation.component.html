@@ -1,0 +1,13 @@
+<div
+  class="w-full min-h-9 sm:min-h-10 md:min-h-11 bg-[#5a5c8c]/10 dark:bg-[#28283D] rounded-xl sm:rounded-2xl p-0.5 sm:p-1 flex flex-wrap sm:flex-nowrap gap-1.5 sm:gap-1">
+  @for (tab of tabs(); track getTabId(tab)) {
+  <button type="button" (click)="onTabClick(tab)" [class]="'flex-1 min-w-0 sm:min-w-fit h-8 sm:h-9 md:h-10 px-2 sm:px-3 md:px-4 py-1 rounded-lg sm:rounded-xl text-xs sm:text-sm md:text-base font-semibold font-sans transition-all duration-200 cursor-pointer truncate sm:overflow-visible sm:whitespace-nowrap ' +
+        (currentActiveTab() === getTabId(tab)
+          ? 'bg-white dark:bg-[#34344F] text-[#5a5c8c] dark:text-[#9ca0c7] shadow-sm'
+          : 'text-[#5a5c8c] dark:text-[#7A7A99] hover:text-[#9ca0c7] dark:hover:text-[#9ca0c7]')"
+    [attr.aria-label]="getTabLabel(tab)" [attr.aria-selected]="currentActiveTab() === getTabId(tab)">
+    {{ getTabLabel(tab) }}
+  </button>
+  }
+</div>
+

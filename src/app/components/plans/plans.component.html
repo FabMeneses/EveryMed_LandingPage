@@ -1,0 +1,164 @@
+<section id="planes" class="py-20 md:py-28 px-4 relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-1/3 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[120px] opacity-10 dark:opacity-20"></div>
+    <div class="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-[#9ca0c7] rounded-full blur-[140px] opacity-10 dark:opacity-20"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div 
+      appAnimateOnScroll
+      class="text-center mb-16 animate-on-scroll">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#5a5c8c] dark:bg-[#9ca0c7] animate-pulse"></span>
+        <span class="text-sm font-medium text-[#5a5c8c] dark:text-[#9ca0c7]">Planes y Precios</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+        Un plan para cada <span class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent">necesidad</span>
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Desde médicos independientes hasta grandes centros de salud, tenemos la solución perfecta para ti
+      </p>
+    </div>
+
+    <!-- Navegación de pestañas -->
+    <div 
+      appAnimateOnScroll
+      class="w-full flex justify-center shrink-0 max-w-md mx-auto mb-12 animate-on-scroll animate-delay-200">
+      <app-tab-navigation
+        [activeTab]="planActivo()"
+        [tabs]="PESTANAS_PLAN"
+        (tabChange)="alCambiarPlan($event)"
+        [enableUrlSync]="false"
+      />
+    </div>
+
+    <!-- Planes Individual -->
+    @if (planActivo() === 'Individual') {
+      <div 
+        appAnimateOnScroll
+        class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-6 items-stretch justify-items-center animate-on-scroll animate-delay-300 max-w-4xl mx-auto">
+        <div class="animate-fade-in-up w-full md:w-full h-full" style="animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'Gratis'"
+            [subtitulo]="'1 usuario'"
+            [precioBase]="0"
+            [precioTexto]="'Gratis'"
+            [descripcion]="'Comienza sin costo'"
+            [caracteristicas]="caracteristicasPlanGratis"
+            [complementos]="complementosPlanGratis"
+            [textoBoton]="'Próximamente'"
+            [botonDeshabilitado]="true"
+            [iconoTipo]="'gratis'"
+          />
+        </div>
+
+        <div class="animate-fade-in-up w-full md:w-full h-full" style="animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'Plan Individual'"
+            [subtitulo]="'1 usuario'"
+            [precioBase]="125"
+            [precioTexto]="'$125.00'"
+            [periodo]="'/mes'"
+            [descripcion]="'Perfecto para médicos independientes'"
+            [caracteristicas]="caracteristicasPlanIndividual"
+            [complementos]="complementosPlanIndividual"
+            [esPopular]="true"
+            [esDestacado]="true"
+            [textoBoton]="'Próximamente'"
+            [botonDeshabilitado]="true"
+            [iconoTipo]="'individual'"
+          />
+        </div>
+      </div>
+    }
+
+    <!-- Planes Empresa -->
+    @if (planActivo() === 'Empresa') {
+      <div 
+        appAnimateOnScroll
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 items-stretch animate-on-scroll animate-delay-300">
+        <div class="animate-fade-in-up h-full" style="animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'Clínica Pequeña'"
+            [subtitulo]="'2 usuarios'"
+            [precioBase]="300"
+            [precioTexto]="'$300'"
+            [periodo]="'/mes'"
+            [descripcion]="'Ideal para clínicas en crecimiento'"
+            [caracteristicas]="caracteristicasClinicaPequena"
+            [complementos]="complementosClinicaPequena"
+            [textoBoton]="'Próximamente'"
+            [botonDeshabilitado]="true"
+            [iconoTipo]="'empresa'"
+          />
+        </div>
+
+        <div class="animate-fade-in-up h-full" style="animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'Clínica Mediana'"
+            [subtitulo]="'3-5 usuarios'"
+            [precioBase]="600"
+            [precioTexto]="'$600'"
+            [periodo]="'/mes'"
+            [descripcion]="'Para clínicas establecidas'"
+            [caracteristicas]="caracteristicasClinicaMediana"
+            [complementos]="complementosClinicaMediana"
+            [esPopular]="true"
+            [esDestacado]="true"
+            [textoBoton]="'Próximamente'"
+            [botonDeshabilitado]="true"
+            [iconoTipo]="'empresa'"
+          />
+        </div>
+
+        <div class="animate-fade-in-up h-full" style="animation-delay: 0.5s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'Clínica Grande'"
+            [subtitulo]="'6-10 usuarios'"
+            [precioBase]="1000"
+            [precioTexto]="'$1,000'"
+            [periodo]="'/mes'"
+            [descripcion]="'Para instituciones grandes'"
+            [caracteristicas]="caracteristicasClinicaGrande"
+            [complementos]="complementosClinicaGrande"
+            [textoBoton]="'Próximamente'"
+            [botonDeshabilitado]="true"
+            [iconoTipo]="'empresa'"
+          />
+        </div>
+
+        <div class="animate-fade-in-up h-full" style="animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'Enterprise'"
+            [subtitulo]="'+10 usuarios'"
+            [precioBase]="0"
+            [precioTexto]="'Personalizado'"
+            [descripcion]="'Solución personalizada'"
+            [caracteristicas]="caracteristicasEnterprise"
+            [complementos]="complementosEnterprise"
+            [textoBoton]="'Contactar Ventas'"
+            [botonDeshabilitado]="false"
+            [iconoTipo]="'premium'"
+          />
+        </div>
+      </div>
+    }
+
+    <!-- Bottom CTA -->
+    <div 
+      appAnimateOnScroll
+      class="mt-16 text-center animate-on-scroll animate-delay-400">
+      <div class="inline-block bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-white/20 dark:border-gray-700/30 shadow-xl">
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+          ¿Necesitas un plan personalizado para tu institución?
+        </p>
+        <a href="#contacto" class="inline-flex items-center gap-2 text-[#5a5c8c] dark:text-[#9ca0c7] font-semibold hover:gap-3 transition-all group cursor-pointer">
+          Contacta con nuestro equipo de ventas
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

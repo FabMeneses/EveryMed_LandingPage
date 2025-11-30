@@ -1,0 +1,102 @@
+<section id="contacto" class="w-full py-20 md:py-28 px-4 relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 left-0 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[120px] opacity-10 dark:opacity-20">
+    </div>
+    <div
+      class="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[#9ca0c7] rounded-full blur-[140px] opacity-10 dark:opacity-20">
+    </div>
+  </div>
+
+  <div class="max-w-2xl mx-auto space-y-12 relative z-10">
+    <div appAnimateOnScroll class="text-center animate-on-scroll">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#5a5c8c] dark:bg-[#9ca0c7] animate-pulse"></span>
+        <span class="text-sm font-medium text-[#5a5c8c] dark:text-[#9ca0c7]">Contacto</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+        <span
+          class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent">Contacto</span>
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300">
+        ¿Tienes preguntas? Estamos aquí para ayudarte
+      </p>
+    </div>
+
+    <form appAnimateOnScroll [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+      class="bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-2xl border border-gray-200/50 dark:border-gray-700/30 space-y-6 animate-on-scroll animate-delay-200">
+
+      <div>
+        <label for="name" class="block text-xs font-semibold tracking-wide text-gray-600 dark:text-gray-300 mb-1.5">
+          Nombre
+        </label>
+        <input id="name" type="text" formControlName="name"
+          class="block w-full h-10 rounded-md border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 px-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 placeholder:text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-[#5a5c8c]/60 focus:border-[#5a5c8c] dark:focus:ring-[#9ca0c7]/60 dark:focus:border-[#9ca0c7] hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+          [class.border-red-500]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+          [class.dark:border-red-500]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+        @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+        <p class="text-red-500 text-xs mt-1">El nombre es requerido (mínimo 2 caracteres)</p>
+        }
+      </div>
+
+      <div>
+        <label for="email" class="block text-xs font-semibold tracking-wide text-gray-600 dark:text-gray-300 mb-1.5">
+          Email
+        </label>
+        <input id="email" type="email" formControlName="email"
+          class="block w-full h-10 rounded-md border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 px-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 placeholder:text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-[#5a5c8c]/60 focus:border-[#5a5c8c] dark:focus:ring-[#9ca0c7]/60 dark:focus:border-[#9ca0c7] hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+          [class.border-red-500]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+          [class.dark:border-red-500]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+        @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+        <p class="text-red-500 text-xs mt-1">Ingresa un email válido</p>
+        }
+      </div>
+
+      <div>
+        <label for="subject" class="block text-xs font-semibold tracking-wide text-gray-600 dark:text-gray-300 mb-1.5">
+          Asunto
+        </label>
+        <input id="subject" type="text" formControlName="subject"
+          class="block w-full h-10 rounded-md border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 px-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 placeholder:text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-[#5a5c8c]/60 focus:border-[#5a5c8c] dark:focus:ring-[#9ca0c7]/60 dark:focus:border-[#9ca0c7] hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+          [class.border-red-500]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched"
+          [class.dark:border-red-500]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched">
+        @if (contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched) {
+        <p class="text-red-500 text-xs mt-1">El asunto es requerido (mínimo 3 caracteres)</p>
+        }
+      </div>
+
+      <div>
+        <label for="message" class="block text-xs font-semibold tracking-wide text-gray-600 dark:text-gray-300 mb-1.5">
+          Mensaje
+        </label>
+        <textarea id="message" formControlName="message" rows="6"
+          class="block w-full min-h-[120px] rounded-md border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 px-2 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 placeholder:text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-[#5a5c8c]/60 focus:border-[#5a5c8c] dark:focus:ring-[#9ca0c7]/60 dark:focus:border-[#9ca0c7] hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed resize-none"
+          [class.border-red-500]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+          [class.dark:border-red-500]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+        @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+        <p class="text-red-500 text-xs mt-1">El mensaje es requerido (mínimo 10 caracteres)</p>
+        }
+      </div>
+
+      @if (submitSuccess()) {
+      <div class="p-4 bg-green-500/20 border border-green-500 rounded-xl text-green-500 dark:text-green-400 text-sm">
+        ✓ Mensaje enviado correctamente. Te responderemos pronto.
+      </div>
+      }
+      @if (submitError()) {
+      <div class="p-4 bg-red-500/20 border border-red-500 rounded-xl text-red-500 dark:text-red-400 text-sm">
+        ✗ Error al enviar el mensaje. Por favor, intenta nuevamente.
+      </div>
+      }
+      <button type="submit" [disabled]="isSubmitting()"
+        class="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-[#5a5c8c] to-[#9ca0c7] text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-[#5a5c8c]/30 dark:hover:shadow-[#9ca0c7]/30 transition-colors duration-500 ease-out disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer text-sm sm:text-base min-h-[44px]">
+        @if (isSubmitting()) {
+        Enviando...
+        } @else {
+        Enviar mensaje
+        }
+      </button>
+    </form>
+  </div>
+</section>

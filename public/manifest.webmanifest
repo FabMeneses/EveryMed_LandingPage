@@ -1,0 +1,27 @@
+{
+  "name": "EveryMed - Plataforma Integral de Gestión Médica",
+  "short_name": "EveryMed",
+  "description": "Plataforma integral de gestión médica diseñada para médicos individuales, clínicas pequeñas y grandes centros de salud",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#5a5c8c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icons-app/everymed-icon/logo-everymed-claro.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["medical", "health", "productivity"],
+  "lang": "es",
+  "dir": "ltr"
+}
+
