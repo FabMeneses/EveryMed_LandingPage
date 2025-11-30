@@ -1,0 +1,50 @@
+<section class="py-20 md:py-28 px-4 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div 
+      appAnimateOnScroll
+      class="relative bg-gradient-to-br from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] rounded-3xl p-10 md:p-16 lg:p-20 shadow-2xl overflow-hidden animate-on-scroll">
+      <!-- Decorative elements -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+      
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+      <div class="relative z-10 text-center space-y-8">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight">
+          ¿Listo para <span class="bg-gradient-to-r from-white via-white/90 to-white bg-clip-text text-transparent">modernizar</span> tu práctica médica?
+        </h2>
+
+        <p class="text-white/90 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+          Únete a más de 150 clínicas y 2,000 profesionales de la salud que confían en EveryMed
+        </p>
+
+        <!-- Benefits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto py-8">
+          @for (benefit of benefits; track benefit) {
+            <div class="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/20">
+              <span class="text-2xl">✓</span>
+              <span class="font-medium">{{ benefit }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- CTA Button -->
+        <div class="pt-6">
+          <a
+            href="#contacto"
+            class="group inline-flex items-center gap-3 bg-white text-[#5a5c8c] px-12 py-5 rounded-2xl hover:bg-white/95 transition-all shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] font-bold text-lg hover:scale-105 cursor-pointer">
+            Comenzar ahora
+            <span class="group-hover:translate-x-1 transition-transform duration-300 text-2xl">→</span>
+          </a>
+        </div>
+
+        <p class="text-white/80 text-base pt-4">
+          Sin compromiso - Conoce la plataforma antes de decidir
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+

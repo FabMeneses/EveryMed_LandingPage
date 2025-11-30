@@ -1,0 +1,62 @@
+<section class="py-20 md:py-28 px-4 relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#9ca0c7] rounded-full blur-[120px] opacity-10 dark:opacity-20"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#5a5c8c] rounded-full blur-[140px] opacity-10 dark:opacity-20"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div 
+      appAnimateOnScroll
+      class="text-center mb-16 animate-on-scroll">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#5a5c8c] dark:bg-[#9ca0c7] animate-pulse"></span>
+        <span class="text-sm font-medium text-[#5a5c8c] dark:text-[#9ca0c7]">Testimonios</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+        Confianza de <span class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent">profesionales</span> de todos los tamaños
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Desde médicos individuales hasta grandes centros médicos
+      </p>
+    </div>
+
+    <div 
+      appAnimateOnScroll
+      class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll animate-delay-200">
+      @for (testimonial of testimonials; track testimonial.name) {
+        <div class="group relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-gray-700/30 overflow-hidden">
+          <!-- Gradient overlay on hover -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#5a5c8c]/5 via-[#9ca0c7]/5 to-[#5a5c8c]/5 dark:from-[#9ca0c7]/10 dark:via-[#5a5c8c]/10 dark:to-[#9ca0c7]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="relative z-10">
+            <!-- Rating -->
+            <div class="flex gap-1 mb-6">
+              @for (i of [1,2,3,4,5]; track i) {
+                <span class="text-2xl text-[#5a5c8c] dark:text-[#9ca0c7]">★</span>
+              }
+            </div>
+
+            <!-- Text -->
+            <p class="text-lg text-gray-900 dark:text-white mb-8 leading-relaxed">"{{ testimonial.text }}"</p>
+
+            <!-- Author -->
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#5a5c8c] to-[#9ca0c7] flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
+                {{ testimonial.name.charAt(0) }}
+              </div>
+              <div>
+                <div class="text-gray-900 dark:text-white font-bold text-lg">{{ testimonial.name }}</div>
+                <div class="text-sm text-gray-600 dark:text-gray-300">{{ testimonial.role }}</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Decorative corner element -->
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#5a5c8c]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,87 @@
+<section id="servicios" class="py-20 md:py-28 px-4 relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#9ca0c7] rounded-full blur-[120px] opacity-10 dark:opacity-20"></div>
+    <div class="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-[#5a5c8c] rounded-full blur-[140px] opacity-10 dark:opacity-20"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] dark:opacity-10"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div 
+      appAnimateOnScroll
+      class="text-center mb-16 animate-on-scroll">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#5a5c8c] dark:bg-[#9ca0c7] animate-pulse"></span>
+        <span class="text-sm font-medium text-[#5a5c8c] dark:text-[#9ca0c7]">Características Principales</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+        Todo lo que necesitas para <span class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent">gestionar</span> tu práctica
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Herramientas profesionales diseñadas para médicos, clínicas y centros de salud modernos
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div 
+      appAnimateOnScroll
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll animate-delay-200">
+        @for (feature of features; track feature.title) {
+        <div class="group relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-gray-700/30 overflow-hidden">
+          <!-- Gradient overlay on hover -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#5a5c8c]/5 via-[#9ca0c7]/5 to-[#5a5c8c]/5 dark:from-[#9ca0c7]/10 dark:via-[#5a5c8c]/10 dark:to-[#9ca0c7]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <!-- Icon container -->
+          <div class="relative z-10 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#5a5c8c]/10 to-[#9ca0c7]/10 dark:from-[#9ca0c7]/20 dark:to-[#5a5c8c]/20 rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[#5a5c8c] group-hover:to-[#9ca0c7] transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+              @switch (feature.iconType) {
+                @case ('document') {
+                  <svg class="w-8 h-8 text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                }
+                @case ('calendar') {
+                  <svg class="w-8 h-8 text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                }
+                @case ('users') {
+                  <svg class="w-8 h-8 text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                }
+                @case ('shield') {
+                  <svg class="w-8 h-8 text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                }
+                @case ('device') {
+                  <svg class="w-8 h-8 text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                }
+                @case ('chart') {
+                  <svg class="w-8 h-8 text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                }
+              }
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 relative z-10 group-hover:text-[#5a5c8c] dark:group-hover:text-[#9ca0c7] transition-colors">
+            {{ feature.title }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 relative z-10 leading-relaxed">
+            {{ feature.description }}
+          </p>
+          
+          <!-- Decorative corner element -->
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#5a5c8c]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
