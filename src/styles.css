@@ -60,18 +60,18 @@ body {
 }
 
 /* =========================================================
-   Fondo animado - EveryMed Admin Style
+   Fondo animado
    ========================================================= */
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -10;
-  pointer-events: none;
-  background: linear-gradient(to bottom right, #f0f2f8, #e6eaf8, #d6def5);
-  transition: background 200ms ease;
-}
+   body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background: linear-gradient(to bottom right, #f0f2f8, #e6eaf8, #d6def5);
+    transition: background 200ms ease;
+  }
 
 html.dark body::before,
 :root.dark body::before,
@@ -141,6 +141,10 @@ html.dark app-root::after,
   background: radial-gradient(circle, rgba(156, 160, 199, 0.06) 0%, transparent 70%);
 }
 
+/* =========================================================
+     Orbes adicionales repartidos por la pantalla
+     ========================================================= */
+
 /* Orbes adicionales repartidos por la pantalla */
 .background-orb {
   position: fixed;
@@ -166,6 +170,91 @@ html.dark app-root::after,
   left: 4%;
   background: radial-gradient(circle, rgba(90, 92, 140, 0.12) 0%, transparent 70%);
   animation: float-light-3 28s ease-in-out infinite;
+}
+
+/* =========================================================
+     Animaciones para los orbes adicionales repartidos por la pantalla
+     ========================================================= */
+
+@keyframes float-light-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.95;
+  }
+  20% {
+    transform: translate(60px, -50px) scale(1.12);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate(-40px, 40px) scale(0.96);
+    opacity: 0.85;
+  }
+  60% {
+    transform: translate(30px, 10px) scale(1.08);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translate(-20px, -35px) scale(0.98);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.95;
+  }
+}
+
+@keyframes float-light-2 {
+  0% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+    opacity: 0.95;
+  }
+  20% {
+    transform: translateY(-50%) translate(-55px, 25px) scale(1.08) rotate(1deg);
+    opacity: 0.88;
+  }
+  40% {
+    transform: translateY(-50%) translate(25px, -35px) scale(0.94) rotate(-0.5deg);
+    opacity: 0.82;
+  }
+  60% {
+    transform: translateY(-50%) translate(-35px, 10px) scale(1.06);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translateY(-50%) translate(45px, -15px) scale(0.97);
+    opacity: 0.87;
+  }
+  100% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+    opacity: 0.95;
+  }
+}
+
+@keyframes float-light-3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.95;
+  }
+  20% {
+    transform: translate(45px, 55px) scale(1.14);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate(-50px, -35px) scale(0.9);
+    opacity: 0.78;
+  }
+  60% {
+    transform: translate(25px, 30px) scale(1.05);
+    opacity: 0.88;
+  }
+  80% {
+    transform: translate(-35px, -45px) scale(0.93);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.95;
+  }
 }
 
 /* =========================================================
@@ -256,7 +345,7 @@ html.dark app-root::after,
 /* =========================================================
    Scrollbar personalizado
    ========================================================= */
-/* Webkit (Chrome, Safari, Edge) */
+/* Webkit (Chrome, Safari, Edge) - Modo Claro */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -264,6 +353,7 @@ html.dark app-root::after,
 
 ::-webkit-scrollbar-track {
   background: transparent;
+  transition: background 200ms ease;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -274,6 +364,26 @@ html.dark app-root::after,
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgb(90 92 140 / 0.8);
+}
+
+/* Webkit - Modo Oscuro */
+html.dark ::-webkit-scrollbar-track,
+:root.dark ::-webkit-scrollbar-track,
+body.dark ::-webkit-scrollbar-track {
+  background: #0a0b14;
+  border-radius: 10px;
+}
+
+html.dark ::-webkit-scrollbar-thumb,
+:root.dark ::-webkit-scrollbar-thumb,
+body.dark ::-webkit-scrollbar-thumb {
+  background-color: rgb(156 160 199 / 0.6);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+:root.dark ::-webkit-scrollbar-thumb:hover,
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(156 160 199 / 0.9);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -289,10 +399,17 @@ html.dark app-root::after,
   }
 }
 
-/* Scrollbar para Firefox */
+/* Scrollbar para Firefox - Modo Claro */
 * {
   scrollbar-width: thin;
   scrollbar-color: rgb(90 92 140 / 0.4) transparent;
+}
+
+/* Scrollbar para Firefox - Modo Oscuro */
+html.dark *,
+:root.dark *,
+body.dark * {
+  scrollbar-color: rgb(156 160 199 / 0.6) #0a0b14;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -3,8 +3,8 @@
     <!-- Contenedor principal con grid de 3 columnas -->
     <div class="h-14 sm:h-16 grid grid-cols-3 items-center">
       <!-- Logo - Centrado en móvil, izquierda en desktop -->
-      <a href="#inicio" class="flex items-center gap-2.5 group md:col-span-1 col-span-3 md:col-start-1 md:justify-start justify-center cursor-pointer">
-        <div class="relative w-9 h-9 sm:w-10 sm:h-10">
+      <a href="#inicio" class="flex items-center justify-center gap-2.5 group md:col-span-1 col-span-3 md:col-start-1 md:justify-start cursor-pointer h-full">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0">
           <!-- Efecto de brillo -->
           <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-md opacity-70"></div>
           <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent"></div>
@@ -16,8 +16,8 @@
               class="w-5 h-5 sm:w-6 sm:h-6 object-contain hidden dark:block drop-shadow-sm" />
           </div>
         </div>
-        <div>
-          <h2 class="font-bold text-base sm:text-lg leading-tight">
+        <div class="flex items-center">
+          <h2 class="font-bold text-base sm:text-lg leading-none">
             <span class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent drop-shadow-sm">
               Every
             </span>
@@ -43,12 +43,6 @@
         <a href="#planes"
           class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer">
           Planes
-          <span
-            class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5a5c8c] dark:bg-[#9ca0c7] group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#equipo"
-          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer">
-          Equipo
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5a5c8c] dark:bg-[#9ca0c7] group-hover:w-full transition-all duration-300"></span>
         </a>

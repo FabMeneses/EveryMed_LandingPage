@@ -1,15 +1,15 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
+import { AnimateOnScrollDirective } from '../../../directives/animate-on-scroll.directive';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-team',
+  selector: 'app-equipo',
   standalone: true,
   imports: [AnimateOnScrollDirective, CommonModule],
-  templateUrl: './team.component.html',
+  templateUrl: './equipo.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TeamComponent {
+export class EquipoComponent {
   company = {
     name: 'EverySoftware',
     description: 'Empresa especializada en desarrollo de software médico y soluciones tecnológicas para todo sector.'
@@ -34,6 +34,4 @@ export class TeamComponent {
     }
   ];
 }
-
-
 

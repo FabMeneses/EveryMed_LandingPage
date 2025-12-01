@@ -48,11 +48,12 @@
             </span>
             <div class="absolute inset-0 bg-gradient-to-r from-[#9ca0c7] to-[#5a5c8c] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </a>
-          <button 
+          <a 
+            routerLink="/demo"
             class="group px-8 py-4 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white font-semibold text-lg border-2 border-gray-200 dark:border-gray-700 hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer">
             <span class="text-[#5a5c8c] dark:text-[#9ca0c7]">▶</span>
             Ver demo
-          </button>
+          </a>
         </div>
 
         <!-- Trust Indicators -->
@@ -105,17 +106,29 @@
             <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#5a5c8c]/20 via-[#9ca0c7]/20 to-[#5a5c8c]/20 dark:from-[#9ca0c7]/30 dark:via-[#5a5c8c]/30 dark:to-[#9ca0c7]/30 opacity-50 blur-xl"></div>
             
             <!-- Content area -->
-            <div class="relative z-10 w-full h-80 md:h-[500px] rounded-2xl bg-gradient-to-br from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 shadow-inner flex items-center justify-center">
-              <!-- Mockup content -->
-              <div class="text-center space-y-4 p-8">
-                <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-[#5a5c8c] to-[#9ca0c7] flex items-center justify-center shadow-lg">
-                  <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <p class="text-[#5a5c8c] dark:text-[#9ca0c7] text-lg font-semibold">Dashboard EveryMed</p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">Vista previa de la plataforma</p>
-              </div>
+            <div class="relative z-10 w-full rounded-2xl overflow-hidden shadow-inner">
+              <!-- Imagen del dashboard - Modo Claro -->
+              <img 
+                src="/assets/images/dashboard_claro.png" 
+                alt="Dashboard EveryMed - Modo Claro"
+                class="w-full h-auto object-contain dark:hidden"
+              />
+              <!-- Imagen del dashboard - Modo Oscuro -->
+              <img 
+                src="/assets/images/dashboard_obscuro.png" 
+                alt="Dashboard EveryMed - Modo Oscuro"
+                class="w-full h-auto object-contain hidden dark:block"
+              />
+            </div>
+
+            <!-- Descripción del dashboard -->
+            <div class="relative z-10 mt-6 text-center">
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Dashboard EveryMed
+              </h3>
+              <p class="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                Vista previa de la plataforma - Gestión completa de tu clínica desde un solo lugar
+              </p>
             </div>
 
             <!-- Floating elements -->
