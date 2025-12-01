@@ -6,6 +6,8 @@ import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ThemeService } from './services/theme.service';
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 @Component({
   selector: 'app-root',
