@@ -1,13 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  signal,
-  computed,
-  OnInit,
-  OnDestroy,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
@@ -20,11 +11,12 @@ interface DemoItem {
   imageDark: string;
   videoDark?: string;
   videoLight?: string;
+  secondaryImageLight?: string;
+  secondaryImageDark?: string;
   features: string[];
 }
 
 type Theme = 'light' | 'dark';
-type ViewMode = 'image' | 'video';
 
 @Component({
   selector: 'app-demo',
@@ -33,8 +25,6 @@ type ViewMode = 'image' | 'video';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DemoComponent implements OnInit, OnDestroy {
-  @ViewChild('modalVideoPlayer') modalVideoPlayer?: ElementRef<HTMLVideoElement>;
-
   // Data
   readonly demos: DemoItem[] = [
     {
@@ -121,106 +111,32 @@ export class DemoComponent implements OnInit, OnDestroy {
       imageDark: '/assets/images/demo/recordatorios_obscuro.png',
       features: ['Recordatorios personalizados', 'Notificaciones automáticas', 'Gestión de tareas'],
     },
+    {
+      id: 'movil-section',
+      title: 'También se puede usar en Móvil',
+      description:
+        'Accede y gestiona tu clínica desde cualquier dispositivo móvil o tablet. Disfruta de la misma funcionalidad completa con una interfaz optimizada para pantallas más pequeñas.',
+      imageLight: '/assets/images/demo/mobile/dashboard_movil_claro.png',
+      imageDark: '/assets/images/demo/mobile/dashboard_movil_obscuro.png',
+      secondaryImageLight: '/assets/images/demo/mobile/agenda_movil_claro.png',
+      secondaryImageDark: '/assets/images/demo/mobile/agenda_movil_obscuro.png',
+      features: [
+        'Interfaz optimizada para móvil',
+        'Acceso en cualquier dispositivo',
+        'Gestión completa desde tablet',
+      ],
+    },
   ];
 
   // State
   readonly demoThemes = signal<Record<string, Theme>>({});
-  readonly demoViewMode = signal<Record<string, ViewMode>>({});
+  readonly showVideo = signal<Record<string, boolean>>({});
 
-  // Modal State
-  readonly activeDemoId = signal<string | null>(null);
-  readonly isVideoPlaying = signal<Record<string, boolean>>({});
-  readonly videoProgress = signal<Record<string, number>>({});
+  ngOnInit(): void {}
 
-  // Computed
-  readonly activeDemo = computed(() => {
-    const id = this.activeDemoId();
-    return id ? this.demos.find((d) => d.id === id) ?? null : null;
-  });
+  ngOnDestroy(): void {}
 
-  readonly activeDemoIndex = computed(() => {
-    const id = this.activeDemoId();
-    return id ? this.demos.findIndex((d) => d.id === id) : -1;
-  });
-
-  readonly canNavigatePrev = computed(() => this.activeDemoIndex() > 0);
-  readonly canNavigateNext = computed(() => this.activeDemoIndex() < this.demos.length - 1);
-
-  // Lifecycle
-  private keydownHandler = this.handleKeyDown.bind(this);
-
-  ngOnInit(): void {
-    document.addEventListener('keydown', this.keydownHandler);
-  }
-
-  ngOnDestroy(): void {
-    document.removeEventListener('keydown', this.keydownHandler);
-    document.body.style.overflow = ''; // Ensure scroll is restored
-  }
-
-  private handleKeyDown(event: KeyboardEvent): void {
-    if (!this.activeDemoId()) return;
-
-    switch (event.key) {
-      case 'Escape':
-        this.closeModal();
-        break;
-      case 'ArrowLeft':
-        this.navigatePrev();
-        break;
-      case 'ArrowRight':
-        this.navigateNext();
-        break;
-    }
-  }
-
-  // Actions
-  openModal(demoId: string, event?: Event): void {
-    event?.stopPropagation();
-    event?.preventDefault();
-
-    this.activeDemoId.set(demoId);
-    document.body.style.overflow = 'hidden';
-  }
-
-  closeModal(event?: Event): void {
-    if (event) {
-      // Prevent closing if clicking on modal content, only close on backdrop
-      const target = event.target as HTMLElement;
-      if (!target.classList.contains('modal-backdrop')) {
-        return;
-      }
-      event.stopPropagation();
-      event.preventDefault();
-    }
-
-    this.pauseAllVideos();
-    this.activeDemoId.set(null);
-    document.body.style.overflow = '';
-  }
-
-  navigatePrev(): void {
-    const currentIndex = this.activeDemoIndex();
-    if (currentIndex > 0) {
-      this.pauseAllVideos();
-      this.activeDemoId.set(this.demos[currentIndex - 1].id);
-    }
-  }
-
-  navigateNext(): void {
-    const currentIndex = this.activeDemoIndex();
-    if (currentIndex < this.demos.length - 1) {
-      this.pauseAllVideos();
-      this.activeDemoId.set(this.demos[currentIndex + 1].id);
-    }
-  }
-
-  navigateToDemo(demoId: string): void {
-    this.pauseAllVideos();
-    this.activeDemoId.set(demoId);
-  }
-
-  // Preferences (Theme & View Mode)
+  // Preferences (Theme only)
   getTheme(demoId: string): Theme {
     return this.demoThemes()[demoId] ?? 'light';
   }
@@ -231,24 +147,14 @@ export class DemoComponent implements OnInit, OnDestroy {
       ...themes,
       [demoId]: current === 'light' ? 'dark' : 'light',
     }));
-  }
-
-  getViewMode(demoId: string): ViewMode {
-    return this.demoViewMode()[demoId] ?? 'image';
-  }
-
-  toggleViewMode(demoId: string): void {
-    const current = this.getViewMode(demoId);
-    const newMode = current === 'image' ? 'video' : 'image';
-
-    if (newMode === 'image') {
-      this.pauseAllVideos();
+    // Si el video está visible pero no hay video para el nuevo tema, ocultar video
+    const demo = this.demos.find((d) => d.id === demoId);
+    if (demo && this.isVideoVisible(demoId) && !this.hasVideo(demo)) {
+      this.showVideo.update((videos) => ({
+        ...videos,
+        [demoId]: false,
+      }));
     }
-
-    this.demoViewMode.update((modes) => ({
-      ...modes,
-      [demoId]: newMode,
-    }));
   }
 
   // Helpers
@@ -258,20 +164,30 @@ export class DemoComponent implements OnInit, OnDestroy {
 
   getVideo(demo: DemoItem): string | null {
     const theme = this.getTheme(demo.id);
-    if (theme === 'dark' && demo.videoDark) return demo.videoDark;
-    if (theme === 'light' && demo.videoLight) return demo.videoLight;
-    return demo.videoDark ?? demo.videoLight ?? null;
+    if (theme === 'dark' && demo.videoDark) {
+      return demo.videoDark;
+    }
+    if (theme === 'light' && demo.videoLight) {
+      return demo.videoLight;
+    }
+    return null;
   }
 
   hasVideo(demo: DemoItem): boolean {
-    return !!(demo.videoDark || demo.videoLight);
+    return !!this.getVideo(demo);
   }
 
-  isReversed(index: number): boolean {
-    return index % 2 === 1;
+  isVideoVisible(demoId: string): boolean {
+    return this.showVideo()[demoId] ?? false;
   }
 
-  // Template helper methods
+  toggleVideo(demoId: string): void {
+    this.showVideo.update((videos) => ({
+      ...videos,
+      [demoId]: !(videos[demoId] ?? false),
+    }));
+  }
+
   getImageOrder(index: number): number {
     return index % 2 === 0 ? 2 : 1;
   }
@@ -280,85 +196,39 @@ export class DemoComponent implements OnInit, OnDestroy {
     return index % 2 === 0 ? 1 : 2;
   }
 
-  openFullscreen(demoId: string): void {
-    this.openModal(demoId);
+  /**
+   * Get button classes based on local theme for this demo item
+   * Returns 'light' or 'dark' class for styling button
+   */
+  getButtonThemeClass(demoId: string): string {
+    return `demo-theme-${this.getTheme(demoId)}`;
   }
 
-  closeFullscreen(event?: Event): void {
-    this.closeModal(event);
+  /**
+   * Get demos that have videos available
+   */
+  getDemosWithVideos(): DemoItem[] {
+    return this.demos.filter((demo) => demo.videoDark || demo.videoLight);
   }
 
-  getCurrentFullscreenDemo(): DemoItem | null {
-    return this.activeDemo();
+  /**
+   * Check if a demo is a mobile demo
+   */
+  isMobileDemo(demoId: string): boolean {
+    return demoId.includes('movil');
   }
 
-  getViewModeForDemo(demoId: string): ViewMode {
-    return this.getViewMode(demoId);
+  /**
+   * Get secondary image for mobile section
+   */
+  getSecondaryImage(demo: DemoItem): string | undefined {
+    return this.getTheme(demo.id) === 'light' ? demo.secondaryImageLight : demo.secondaryImageDark;
   }
 
-  getImageForDemo(demo: DemoItem): string {
-    return this.getImage(demo);
-  }
-
-  getVideoForDemo(demo: DemoItem): string | null {
-    return this.getVideo(demo);
-  }
-
-  getThemeForDemo(demoId: string): Theme {
-    return this.getTheme(demoId);
-  }
-
-  toggleVideoPlay(demoId: string, videoEl: HTMLVideoElement): void {
-    this.toggleVideo(demoId, videoEl);
-  }
-
-  playingVideos(): Record<string, boolean> {
-    return this.isVideoPlaying();
-  }
-
-  onFullscreenLoaded(demoId: string, videoEl: HTMLVideoElement): void {
-    // Optional: handle video loaded metadata
-    this.videoProgress.update((state) => ({ ...state, [demoId]: 0 }));
-  }
-
-  // Video Controls
-  isPlaying(demoId: string): boolean {
-    return this.isVideoPlaying()[demoId] ?? false;
-  }
-
-  getProgress(demoId: string): number {
-    return this.videoProgress()[demoId] ?? 0;
-  }
-
-  toggleVideo(demoId: string, videoEl: HTMLVideoElement): void {
-    if (videoEl.paused) {
-      videoEl.play().catch(() => {});
-    } else {
-      videoEl.pause();
-    }
-  }
-
-  onVideoPlay(demoId: string): void {
-    this.isVideoPlaying.update((state) => ({ ...state, [demoId]: true }));
-  }
-
-  onVideoPause(demoId: string): void {
-    this.isVideoPlaying.update((state) => ({ ...state, [demoId]: false }));
-  }
-
-  onVideoTimeUpdate(demoId: string, videoEl: HTMLVideoElement): void {
-    const progress = (videoEl.currentTime / videoEl.duration) * 100 || 0;
-    this.videoProgress.update((state) => ({ ...state, [demoId]: progress }));
-  }
-
-  onVideoEnded(demoId: string): void {
-    this.isVideoPlaying.update((state) => ({ ...state, [demoId]: false }));
-    this.videoProgress.update((state) => ({ ...state, [demoId]: 0 }));
-  }
-
-  private pauseAllVideos(): void {
-    document.querySelectorAll('video').forEach((v) => v.pause());
-    this.isVideoPlaying.set({});
-    this.videoProgress.set({});
+  /**
+   * Check if demo has secondary image
+   */
+  hasSecondaryImage(demo: DemoItem): boolean {
+    return !!this.getSecondaryImage(demo);
   }
 }

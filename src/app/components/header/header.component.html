@@ -1,57 +1,65 @@
-<header class="bg-[rgb(255_255_255/0.8)] dark:bg-[rgb(31_41_55/0.8)] backdrop-blur-md shadow-md z-50 transition-colors duration-300">
-  <nav class="w-full px-4 sm:px-6 lg:px-12">
+<header
+  class="bg-[rgb(255_255_255/0.8)] dark:bg-[rgb(31_41_55/0.8)] backdrop-blur-md shadow-md z-50 transition-colors duration-300">
+  <nav class="w-full px-4 sm:px-6 lg:px-12 py-0">
     <!-- Contenedor principal con grid de 3 columnas -->
-    <div class="h-14 sm:h-16 grid grid-cols-3 items-center">
+    <div class="h-14 sm:h-16 grid grid-cols-3 items-center m-0">
       <!-- Logo - Centrado en móvil, izquierda en desktop -->
-      <a href="#inicio" class="flex items-center justify-center gap-2.5 group md:col-span-1 col-span-3 md:col-start-1 md:justify-start cursor-pointer h-full">
-        <div class="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0">
+      <button (click)="navigateToHome('inicio')"
+        class="flex items-center justify-center gap-2.5 group md:col-span-1 col-span-3 md:col-start-1 md:justify-start cursor-pointer h-full bg-transparent border-0 p-0">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0 flex items-center justify-center">
           <!-- Efecto de brillo -->
-          <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-md opacity-70"></div>
-          <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent"></div>
+          <div
+            class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-md opacity-70">
+          </div>
+          <div
+            class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent">
+          </div>
           <!-- Contenedor del logo -->
-          <div class="relative w-full h-full rounded-xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-lg shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-105">
-            <img src="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="EveryMed Logo" 
+          <div
+            class="relative w-full h-full rounded-xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-lg shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-105">
+            <img src="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="EveryMed Logo"
               class="w-5 h-5 sm:w-6 sm:h-6 object-contain block dark:hidden drop-shadow-sm" />
-            <img src="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="EveryMed Logo" 
+            <img src="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="EveryMed Logo"
               class="w-5 h-5 sm:w-6 sm:h-6 object-contain hidden dark:block drop-shadow-sm" />
           </div>
         </div>
-        <div class="flex items-center">
-          <h2 class="font-bold text-base sm:text-lg leading-none">
-            <span class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent drop-shadow-sm">
+        <div class="flex items-center justify-center m-0 p-0">
+          <h2 class="font-bold text-base sm:text-lg leading-none m-0 p-0 flex items-center">
+            <span
+              class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent drop-shadow-sm">
               Every
             </span>
             <span class="text-[#5a5c8c] dark:text-[#9ca0c7] drop-shadow-sm">Med</span>
           </h2>
         </div>
-      </a>
+      </button>
 
       <!-- Navegación - Centro (solo escritorio) -->
       <div class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
-        <a href="#inicio"
-          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer">
+        <button (click)="navigateToHome('inicio')"
+          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer bg-transparent border-0 p-0 font-normal">
           Inicio
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5a5c8c] dark:bg-[#9ca0c7] group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#servicios"
-          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer">
+        </button>
+        <button (click)="navigateToHome('servicios')"
+          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer bg-transparent border-0 p-0 font-normal">
           Servicios
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5a5c8c] dark:bg-[#9ca0c7] group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#planes"
-          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer">
+        </button>
+        <button (click)="navigateToHome('planes')"
+          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer bg-transparent border-0 p-0 font-normal">
           Planes
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5a5c8c] dark:bg-[#9ca0c7] group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#contacto"
-          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer">
+        </button>
+        <button (click)="navigateToHome('contacto')"
+          class="text-lg text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 relative group cursor-pointer bg-transparent border-0 p-0 font-normal">
           Contacto
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5a5c8c] dark:bg-[#9ca0c7] group-hover:w-full transition-all duration-300"></span>
-        </a>
+        </button>
       </div>
 
       <!-- Espacio vacío en móvil para mantener el grid -->

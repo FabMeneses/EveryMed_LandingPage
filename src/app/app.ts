@@ -3,23 +3,22 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
-import { ThemeService } from './services/theme.service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, BottomNavComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App implements OnInit, AfterViewInit, OnDestroy {
-  // Inyectar el servicio para inicializarlo al cargar la app
-  private readonly themeService = inject(ThemeService);
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
+  // Inicializa el servicio de tema
+  private readonly themeService = inject(ThemeService);
   private clickHandler?: (event: MouseEvent) => void;
 
   ngOnInit(): void {
@@ -31,7 +30,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe((event: NavigationEnd) => {
         const url = event.urlAfterRedirects;
-        
+
         // Reiniciar scroll si es una ruta de legal, conocenos o demo (no es la landing)
         if (url.startsWith('/legal/') || url.startsWith('/conocenos/') || url.startsWith('/demo')) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -78,14 +77,14 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       if (modalBackdrop) {
         return;
       }
-      
+
       const target = event.target as HTMLElement;
       const link = target.closest('a[href^="#"]') as HTMLAnchorElement;
-      
+
       if (link && link.hash && link.hash !== '#') {
         event.preventDefault();
         const targetId = link.hash.substring(1);
-        
+
         // Pequeño delay para asegurar que el DOM esté listo
         setTimeout(() => {
           scrollToSection(targetId);
