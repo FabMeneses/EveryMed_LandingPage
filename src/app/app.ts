@@ -6,8 +6,12 @@ import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ThemeService } from './services/theme.service';
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+
+declare global {
+  interface Window {
+    va?: (...args: unknown[]) => void;
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -37,6 +41,9 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
         if (url.startsWith('/legal/') || url.startsWith('/conocenos/') || url.startsWith('/demo')) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Registrar pageview para Vercel Analytics en SPA
+        window.va?.('pageview');
       });
   }
 

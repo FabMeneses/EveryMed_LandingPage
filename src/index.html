@@ -140,6 +140,18 @@
 <body class="font-sans notranslate">
   <app-root></app-root>
   <noscript>Por favor, habilita JavaScript para continuar usando esta aplicación.</noscript>
+    
+    <!-- Vercel Analytics (framework-agnostic) -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments) };
+    </script>
+    <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
+    
+    <!-- Vercel Speed Insights (framework-agnostic) -->
+    <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments) };
+    </script>
+    <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
 </body>
 
 </html>
