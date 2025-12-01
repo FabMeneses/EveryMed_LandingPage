@@ -10,13 +10,13 @@ export interface ContactFormData {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContactService {
   // Configuración de EmailJS
-  private readonly EMAILJS_PUBLIC_KEY = '_bfqJjp9VCV73OwEB';
-  private readonly EMAILJS_SERVICE_ID = 'service_o3hu3g6';
-  private readonly EMAILJS_TEMPLATE_ID = 'template_jr59ma1';
+  private readonly EMAILJS_PUBLIC_KEY = 'soVSCLvnwwHStdqV1';
+  private readonly EMAILJS_SERVICE_ID = 'service_3607dt8';
+  private readonly EMAILJS_TEMPLATE_ID = 'template_5ggesgs';
 
   constructor() {
     // Inicializar EmailJS con tu Public Key
@@ -24,20 +24,17 @@ export class ContactService {
   }
 
   sendEmail(data: ContactFormData): Observable<any> {
-    return new Observable(observer => {
+    return new Observable((observer) => {
       // Enviar email usando EmailJS
       emailjs
-        .send(
-          this.EMAILJS_SERVICE_ID,
-          this.EMAILJS_TEMPLATE_ID,
-          {
-            from_name: data.name,
-            from_email: data.email,
-            subject: data.subject,
-            message: data.message,
-            to_email: 'fmenesesavila1@gmail.com'
-          }
-        )
+        .send(this.EMAILJS_SERVICE_ID, this.EMAILJS_TEMPLATE_ID, {
+          name: 'Equipo de EveryMed',
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          to_email: 'everymed.develop@gmail.com',
+        })
         .then(
           (response) => {
             observer.next({ success: true, response });
@@ -50,4 +47,3 @@ export class ContactService {
     });
   }
 }
-

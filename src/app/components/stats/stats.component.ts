@@ -10,10 +10,9 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.dir
 })
 export class StatsComponent {
   stats = [
-    { iconType: 'hospital', value: '150+', label: 'Clínicas activas' },
-    { iconType: 'doctor', value: '2,000+', label: 'Médicos profesionales' },
-    { iconType: 'calendar', value: '50K+', label: 'Citas mensuales' },
-    { iconType: 'document', value: '100K+', label: 'Historiales digitales' }
+    { iconType: 'hospital', value: '9+', label: 'Módulos principales' },
+    { iconType: 'doctor', value: '∞', label: 'Escalabilidad' },
+    { iconType: 'calendar', value: 'Multi', label: 'Dispositivos' },
+    { iconType: 'document', value: '✓', label: 'Adaptable a todo tipo de especialidades' },
   ];
 }
-

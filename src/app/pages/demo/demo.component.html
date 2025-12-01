@@ -1,0 +1,262 @@
+<section class="py-20 md:py-28 px-4 relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#9ca0c7] rounded-full blur-[120px] opacity-10 dark:opacity-20">
+    </div>
+    <div
+      class="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-[#5a5c8c] rounded-full blur-[140px] opacity-10 dark:opacity-20">
+    </div>
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] dark:opacity-10">
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">n
+    <!-- Section Header -->
+    <div appAnimateOnScroll class="text-center mb-16 animate-on-scroll">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#5a5c8c] dark:bg-[#9ca0c7] animate-pulse"></span>
+        <span class="text-sm font-medium text-[#5a5c8c] dark:text-[#9ca0c7]">Vista Previa de la Plataforma</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+        Explora <span
+          class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent">EveryMed</span>
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-4">
+        Descubre cómo nuestra plataforma puede transformar la gestión de tu clínica. Disponible en PC, móvil y tabletas.
+      </p>
+    </div>
+
+    <!-- Demos Grid -->
+    <div class="space-y-24">
+      @for (demo of demos; track demo.id; let i = $index) {
+      <div appAnimateOnScroll [class.animate-delay-100]="i % 2 === 0" [class.animate-delay-200]="i % 2 === 1"
+        class="animate-on-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <!-- Media Section -->
+          <div [class]="'order-2 lg:order-' + getImageOrder(i)">
+            <div
+              [class]="isMobileDemo(demo.id) ? 'flex gap-6 justify-center lg:justify-end items-center' : 'relative group'">
+              @if (isMobileDemo(demo.id)) {
+              <!-- Mobile images side by side -->
+              <div class="relative group w-44">
+                <div
+                  class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-700/30 bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl transition-all duration-500 group-hover:shadow-3xl group-hover:scale-[1.05]">
+                  <img [src]="getImage(demo)" [alt]="demo.title"
+                    class="w-full h-auto transition-opacity duration-500 object-contain" loading="lazy" />
+                  <!-- Theme Toggle Button -->
+                  <button (click)="toggleTheme(demo.id); $event.stopPropagation()"
+                    [class]="'absolute top-4 right-4 px-3 py-2 rounded-lg backdrop-blur-sm font-semibold shadow-lg hover:scale-110 transition-all duration-300 flex items-center gap-2 cursor-pointer z-10 ' + (getTheme(demo.id) === 'light' ? 'bg-white/90 text-gray-900' : 'bg-gray-800/90 text-white')">
+                    @if (getTheme(demo.id) === 'light') {
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    } @else {
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    }
+                  </button>
+                </div>
+              </div>
+              @if (hasSecondaryImage(demo)) {
+              <div class="relative group w-44">
+                <div
+                  class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-700/30 bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl transition-all duration-500 group-hover:shadow-3xl group-hover:scale-[1.05]">
+                  <img [src]="getSecondaryImage(demo)!" [alt]="demo.title + ' - 2'"
+                    class="w-full h-auto transition-opacity duration-500 object-contain" loading="lazy" />
+                  <!-- Theme Toggle Button -->
+                  <button (click)="toggleTheme(demo.id); $event.stopPropagation()"
+                    [class]="'absolute top-4 right-4 px-3 py-2 rounded-lg backdrop-blur-sm font-semibold shadow-lg hover:scale-110 transition-all duration-300 flex items-center gap-2 cursor-pointer z-10 ' + (getTheme(demo.id) === 'light' ? 'bg-white/90 text-gray-900' : 'bg-gray-800/90 text-white')">
+                    @if (getTheme(demo.id) === 'light') {
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    } @else {
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    }
+                  </button>
+                </div>
+              </div>
+              }
+              } @else {
+              <!-- Desktop demo images -->
+              <div class="relative group">
+                <div
+                  class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-700/30 bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl transition-all duration-500 group-hover:shadow-3xl group-hover:scale-[1.01]">
+
+                  <!-- Video Display -->
+                  @if (isVideoVisible(demo.id) && hasVideo(demo)) {
+                  <video [src]="getVideo(demo)!" [attr.key]="demo.id + '-' + getTheme(demo.id)" [autoplay]="false"
+                    [loop]="true" [muted]="true" [playsInline]="true"
+                    class="w-full h-auto transition-opacity duration-500 object-contain" controls preload="metadata">
+                    Tu navegador no soporta la reproducción de videos.
+                  </video>
+                  } @else {
+                  <!-- Image Display -->
+                  <img [src]="getImage(demo)" [alt]="demo.title"
+                    class="w-full h-auto transition-opacity duration-500 object-contain" loading="lazy" />
+                  }
+
+                  <!-- Controls Overlay -->
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4 md:p-6 pointer-events-none gap-2">
+                    <!-- Video/Image Toggle Button -->
+                    @if (hasVideo(demo)) {
+                    <button (click)="toggleVideo(demo.id); $event.stopPropagation()"
+                      [class]="'px-4 py-2 rounded-xl backdrop-blur-sm font-semibold shadow-lg hover:scale-110 transition-all duration-300 flex items-center gap-2 pointer-events-auto cursor-pointer ' + (isVideoVisible(demo.id) ? 'bg-[#5a5c8c]/90 dark:bg-[#9ca0c7]/90 text-white' : 'bg-white/90 dark:bg-gray-800/90 text-gray-900 dark:text-white')">
+                      @if (isVideoVisible(demo.id)) {
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span class="text-xs">Ver Imagen</span>
+                      } @else {
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      <span class="text-xs">Ver Video</span>
+                      }
+                    </button>
+                    }
+                    <!-- Theme Toggle Button -->
+                    <button (click)="toggleTheme(demo.id); $event.stopPropagation()"
+                      [class]="'px-4 py-2 rounded-xl backdrop-blur-sm font-semibold shadow-lg hover:scale-110 transition-all duration-300 flex items-center gap-2 pointer-events-auto cursor-pointer ' + (getTheme(demo.id) === 'light' ? 'bg-white/90 text-gray-900' : 'bg-gray-800/90 text-white')">
+                      @if (getTheme(demo.id) === 'light') {
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                      </svg>
+                      <span class="text-xs">Tema Oscuro</span>
+                      } @else {
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                      <span class="text-xs">Tema Claro</span>
+                      }
+                    </button>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+
+          <!-- Content Section -->
+          <div [class]="'order-1 lg:order-' + getContentOrder(i)">
+            <div
+              class="bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/30">
+              <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">{{ demo.title }}</h2>
+              <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">{{ demo.description }}</p>
+              <ul class="space-y-3">
+                @for (feature of demo.features; track feature) {
+                <li class="flex items-start gap-3">
+                  <svg class="w-6 h-6 text-[#5a5c8c] dark:text-[#9ca0c7] shrink-0 mt-0.5" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">{{ feature }}</span>
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Videos Section -->
+  @if (getDemosWithVideos().length > 0) {
+  <div class="max-w-7xl mx-auto relative z-10 mt-32">
+    <div appAnimateOnScroll class="text-center mb-16 animate-on-scroll">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#5a5c8c] dark:bg-[#9ca0c7] animate-pulse"></span>
+        <span class="text-sm font-medium text-[#5a5c8c] dark:text-[#9ca0c7]">Videos Demostrativos</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+        Videos en Acción
+      </h2>
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Observa cómo funciona EveryMed en la práctica con estos videos demostrativos.
+      </p>
+    </div>
+
+    <!-- Videos Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      @for (demo of getDemosWithVideos(); track demo.id; let i = $index) {
+      <div appAnimateOnScroll [class.animate-delay-100]="i % 3 === 0" [class.animate-delay-200]="i % 3 === 1"
+        [class.animate-delay-300]="i % 3 === 2" class="animate-on-scroll">
+        <div
+          class="bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl border border-white/20 dark:border-gray-700/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+          <!-- Video Container -->
+          <div class="relative aspect-video bg-gray-900">
+            <video [src]="getVideo(demo) || demo.videoDark || demo.videoLight!"
+              [attr.key]="demo.id + '-' + getTheme(demo.id)" [autoplay]="false" [loop]="true" [muted]="true"
+              [playsInline]="true" class="w-full h-full object-cover" controls preload="metadata">
+              Tu navegador no soporta la reproducción de videos.
+            </video>
+            <!-- Theme Toggle Button -->
+            <button (click)="toggleTheme(demo.id); $event.stopPropagation()"
+              [class]="'absolute top-4 right-4 px-3 py-2 rounded-lg backdrop-blur-sm font-semibold shadow-lg hover:scale-110 transition-all duration-300 flex items-center gap-2 cursor-pointer z-10 ' + (getTheme(demo.id) === 'light' ? 'bg-white/90 text-gray-900' : 'bg-gray-800/90 text-white')">
+              @if (getTheme(demo.id) === 'light') {
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+              <span class="text-xs">Oscuro</span>
+              } @else {
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <span class="text-xs">Claro</span>
+              }
+            </button>
+          </div>
+          <!-- Video Info -->
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ demo.title }}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{{ demo.description }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- CTA Section -->
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div appAnimateOnScroll class="text-center mt-24 animate-on-scroll animate-delay-300">
+      <div
+        class="bg-gradient-to-br from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-xl rounded-3xl p-12 border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+          ¿Listo para comenzar?
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          Solicita una demostración personalizada y descubre cómo EveryMed puede adaptarse a las necesidades específicas
+          de tu clínica.
+        </p>
+        <a routerLink="/" fragment="contacto"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#5a5c8c] to-[#9ca0c7] text-white font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg">
+          Contactar para Demo
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -8,3 +8,5 @@ Sitemap: https://everymed.com/sitemap.xml
 Disallow: /admin/
 Disallow: /api/
 
+
+
