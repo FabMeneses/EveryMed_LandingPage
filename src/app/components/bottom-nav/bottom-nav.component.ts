@@ -75,14 +75,29 @@ export class BottomNavComponent implements OnInit, OnDestroy {
   protected scrollToSection(section: string): void {
     if (!this.isBrowser) return;
 
+    // Para "inicio", ir completamente al top ya que el hero ya tiene padding
+    if (section === 'inicio') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+      
+      setTimeout(() => {
+        this.activeSection.set(section);
+        this.updateActiveSection();
+      }, 300);
+      return;
+    }
+
     const element = document.getElementById(section);
     if (element) {
-      const headerHeight = 64; // Altura aproximada del header
+      // Calcular la altura del header (h-14 = 3.5rem = 56px en móvil, h-16 = 4rem = 64px en desktop)
+      const headerHeight = window.innerWidth >= 640 ? 64 : 56;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition), // Asegurar que no sea negativo
         behavior: 'smooth',
       });
 

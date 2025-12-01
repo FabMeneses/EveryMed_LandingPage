@@ -1,66 +1,75 @@
-import { Injectable, signal, effect } from '@angular/core';
+import { DestroyRef, Injectable, signal, computed, effect, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
-type Theme = 'light' | 'dark';
-
-@Injectable({
-  providedIn: 'root'
-})
+// Servicio para gestionar el tema de la app (solo detección automática del sistema)
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private readonly THEME_KEY = 'landing-page-theme';
-  private readonly themeSignal = signal<Theme>(this.getInitialTheme());
+  private readonly document = inject(DOCUMENT);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly isBrowser = typeof window !== 'undefined';
+  private readonly prefersDark = this.isBrowser
+    ? window.matchMedia('(prefers-color-scheme: dark)')
+    : null;
+  private readonly systemTheme = signal<'light' | 'dark'>(this.getSystemTheme());
+
+  // Estado reactivo del tema actual (basado únicamente en el sistema)
+  readonly currentTheme = computed(() => this.systemTheme());
+  readonly isDarkMode = computed(() => this.currentTheme() === 'dark');
 
   constructor() {
-    // Aplicar tema inicial
-    this.applyTheme(this.themeSignal());
-
-    // Efecto para aplicar tema cuando cambie
     effect(() => {
-      this.applyTheme(this.themeSignal());
+      if (!this.isBrowser) {
+        return;
+      }
+      this.applyTheme(this.currentTheme());
     });
-  }
 
-  readonly theme = this.themeSignal.asReadonly();
-
-  toggleTheme(): void {
-    const newTheme: Theme = this.themeSignal() === 'light' ? 'dark' : 'light';
-    this.setTheme(newTheme);
-  }
-
-  setTheme(theme: Theme): void {
-    this.themeSignal.set(theme);
-    localStorage.setItem(this.THEME_KEY, theme);
-  }
-
-  private getInitialTheme(): Theme {
-    if (typeof window === 'undefined') {
-      return 'light';
-    }
-
-    // Verificar preferencia guardada
-    const savedTheme = localStorage.getItem(this.THEME_KEY) as Theme | null;
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      return savedTheme;
-    }
-
-    // Verificar preferencia del sistema
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-
-    return 'light';
-  }
-
-  private applyTheme(theme: Theme): void {
-    if (typeof document === 'undefined') {
+    if (!this.isBrowser) {
       return;
     }
 
-    const html = document.documentElement;
-    if (theme === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
+    if (this.prefersDark) {
+      const handlePreferenceChange = (event: MediaQueryListEvent) => {
+        this.systemTheme.set(event.matches ? 'dark' : 'light');
+      };
+
+      this.prefersDark.addEventListener('change', handlePreferenceChange);
+      this.destroyRef.onDestroy(() => {
+        this.prefersDark?.removeEventListener('change', handlePreferenceChange);
+      });
     }
+  }
+
+  // Aplica la clase 'dark' al <html>
+  private applyTheme(theme: 'light' | 'dark') {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const root = this.document.documentElement;
+    const body = this.document.body;
+
+    root.classList.toggle('dark', theme === 'dark');
+    root.classList.toggle('light', theme === 'light');
+    root.setAttribute('data-theme', theme);
+
+    body.classList.toggle('dark', theme === 'dark');
+    body.classList.toggle('light', theme === 'light');
+    body.setAttribute('data-theme', theme);
+
+    // Ajusta meta theme-color para navegadores móviles
+    const themeColorMeta = this.document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', theme === 'dark' ? '#1A1A26' : '#F2F2F2');
+    }
+  }
+
+  // Obtiene el tema del sistema
+  private getSystemTheme(): 'light' | 'dark' {
+    if (!this.prefersDark) {
+      return 'light';
+    }
+    return this.prefersDark.matches ? 'dark' : 'light';
   }
 }
 

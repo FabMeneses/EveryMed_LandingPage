@@ -1,19 +1,29 @@
-<footer class="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300 overflow-hidden">
+<footer
+  class="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300 overflow-hidden">
   <!-- Background decorative elements -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[120px] opacity-5 dark:opacity-10"></div>
-    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#9ca0c7] rounded-full blur-[140px] opacity-5 dark:opacity-10"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[120px] opacity-5 dark:opacity-10">
+    </div>
+    <div
+      class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#9ca0c7] rounded-full blur-[140px] opacity-5 dark:opacity-10">
+    </div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
       <!-- Brand Section -->
       <div class="lg:col-span-1">
-        <a href="#inicio" class="flex items-center gap-2.5 mb-4 group cursor-pointer">
+        <button (click)="navigateToSection('inicio')"
+          class="flex items-center gap-2.5 mb-4 group cursor-pointer bg-transparent border-0 p-0">
           <div class="relative w-10 h-10 sm:w-12 sm:h-12">
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-md opacity-70"></div>
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent"></div>
-            <div class="relative w-full h-full rounded-xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-lg shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-105">
+            <div
+              class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-md opacity-70">
+            </div>
+            <div
+              class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent">
+            </div>
+            <div
+              class="relative w-full h-full rounded-xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-lg shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-105">
               <img src="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="EveryMed Logo"
                 class="w-6 h-6 sm:w-7 sm:h-7 object-contain block dark:hidden drop-shadow-sm" />
               <img src="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="EveryMed Logo"
@@ -22,13 +32,14 @@
           </div>
           <div>
             <h2 class="font-bold text-lg sm:text-xl leading-tight">
-              <span class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent drop-shadow-sm">
+              <span
+                class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] dark:from-[#9ca0c7] dark:via-[#5a5c8c] dark:to-[#9ca0c7] bg-clip-text text-transparent drop-shadow-sm">
                 Every
               </span>
               <span class="text-[#5a5c8c] dark:text-[#9ca0c7] drop-shadow-sm">Med</span>
             </h2>
           </div>
-        </a>
+        </button>
         <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
           Plataforma integral de gestión médica diseñada para médicos, clínicas y centros de salud modernos.
         </p>
@@ -58,34 +69,44 @@
         <h3 class="text-base font-bold text-gray-900 dark:text-white mb-4">Navegación</h3>
         <ul class="space-y-3">
           <li>
-            <a href="#inicio" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <button (click)="navigateToSection('inicio')"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer bg-transparent border-0 p-0 font-normal">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Inicio
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#servicios" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <button (click)="navigateToSection('servicios')"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer bg-transparent border-0 p-0 font-normal">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Servicios
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#planes" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <button (click)="navigateToSection('planes')"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer bg-transparent border-0 p-0 font-normal">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Planes
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#equipo" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
-              Equipo
-            </a>
-          </li>
-          <li>
-            <a href="#contacto" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <button (click)="navigateToSection('contacto')"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer bg-transparent border-0 p-0 font-normal">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Contacto
-            </a>
+            </button>
+          </li>
+          <li>
+            <button (click)="navigateToSection('equipo')"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer bg-transparent border-0 p-0 font-normal">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+              Equipo
+            </button>
           </li>
         </ul>
       </div>
@@ -95,27 +116,50 @@
         <h3 class="text-base font-bold text-gray-900 dark:text-white mb-4">Legal</h3>
         <ul class="space-y-3">
           <li>
-            <a routerLink="/legal/terminos" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <a routerLink="/legal/terminos"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Términos de Servicio
             </a>
           </li>
           <li>
-            <a routerLink="/legal/privacidad" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <a routerLink="/legal/privacidad"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Política de Privacidad
             </a>
           </li>
           <li>
-            <a routerLink="/legal/cookies" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <a routerLink="/legal/cookies"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Política de Cookies
             </a>
           </li>
           <li>
-            <a routerLink="/legal/aviso-legal" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+            <a routerLink="/legal/aviso-legal"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
               Aviso Legal
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Ver Demo -->
+      <div>
+        <h3 class="text-base font-bold text-gray-900 dark:text-white mb-4">Ver Demo</h3>
+        <ul class="space-y-3">
+          <li>
+            <a routerLink="/demo"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+              Demo Interactiva
             </a>
           </li>
         </ul>
@@ -126,19 +170,33 @@
         <h3 class="text-base font-bold text-gray-900 dark:text-white mb-4">Contacto</h3>
         <ul class="space-y-3">
           <li class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-[#5a5c8c] dark:text-[#9ca0c7] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <svg class="w-5 h-5 text-[#5a5c8c] dark:text-[#9ca0c7] mt-0.5 flex-shrink-0" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <a href="mailto:everymed@gmail.com" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 cursor-pointer">
+            <a href="mailto:everymed@gmail.com"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 cursor-pointer">
               everymed@gmail.com
             </a>
           </li>
           <li class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-[#5a5c8c] dark:text-[#9ca0c7] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            <svg class="w-5 h-5 text-[#5a5c8c] dark:text-[#9ca0c7] mt-0.5 flex-shrink-0" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            <a href="tel:7714315837" class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 cursor-pointer">
+            <a href="tel:7714315837"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 cursor-pointer">
               7714315837
+            </a>
+          </li>
+          <li>
+            <a routerLink="/conocenos/equipo"
+              class="text-sm text-gray-600 dark:text-gray-400 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] transition-colors duration-200 flex items-center gap-2 group cursor-pointer">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#5a5c8c]/30 dark:bg-[#9ca0c7]/30 group-hover:bg-[#5a5c8c] dark:group-hover:bg-[#9ca0c7] transition-colors"></span>
+              Equipo
             </a>
           </li>
         </ul>
@@ -146,18 +204,20 @@
     </div>
 
     <!-- Bottom Bar -->
-    <div class="mt-12 pt-8 border-t border-gray-200/50 dark:border-gray-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div
+      class="mt-12 pt-8 border-t border-gray-200/50 dark:border-gray-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
         &copy; {{ currentYear }} EveryMed. Todos los derechos reservados.
       </p>
-      <p class="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-right flex items-center justify-center sm:justify-end gap-1.5">
-        Hecho con 
+      <p
+        class="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-right flex items-center justify-center sm:justify-end gap-1.5">
+        Hecho con
         <svg class="w-4 h-4 text-[#5a5c8c] dark:text-[#9ca0c7]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
         </svg>
         para profesionales de la salud
       </p>
     </div>
   </div>
 </footer>
-

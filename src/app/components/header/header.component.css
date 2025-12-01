@@ -23,4 +23,19 @@
   width: 100% !important;
   max-width: 100% !important;
   position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Eliminar espacios extra del nav */
+:host header nav {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Eliminar espacios extra del contenedor del grid */
+:host header nav > div {
+  margin: 0 !important;
+  padding: 0 !important;
 }
