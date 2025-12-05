@@ -6,9 +6,11 @@ import { CookiesComponent } from './pages/legal/cookies/cookies.component';
 import { LegalNoticeComponent } from './pages/legal/legal-notice/legal-notice.component';
 import { EquipoComponent } from './pages/conocenos/equipo/equipo.component';
 import { DemoComponent } from './pages/demo/demo.component';
+import { DownloadComponent } from './pages/download/download.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'descarga', component: DownloadComponent },
   { path: 'legal/terminos', component: TermsComponent },
   { path: 'legal/privacidad', component: PrivacyComponent },
   { path: 'legal/cookies', component: CookiesComponent },

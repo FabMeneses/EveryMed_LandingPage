@@ -21,7 +21,7 @@ export class EquipoComponent {
       role: 'Desarrollador Full Stack',
       description: 'Desarrollador Web Full Stack y Diseñador de Interfaces. Especializado en crear experiencias digitales atractivas y funcionales. Más de 1 año de experiencia en desarrollo web y móvil, con enfoque en Angular 20, .NET 9, Clean Architecture y PWA.',
       github: 'https://github.com/FabMeneses',
-      portfolio: 'https://fab-portfolio.vercel.app/',
+      portfolio: 'https://fabmeneses-portfolio.vercel.app',
       avatar: 'FM'
     },
     {
