@@ -1,0 +1,66 @@
+/* Download component styles */
+
+/* Animate on scroll styles */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-on-scroll.animate-visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card hover animations */
+.group:has(> .group-hover\:opacity-100) {
+  position: relative;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  position: relative;
+}
+
+/* Glow effect on hover */
+.hover\:shadow-\[\#5a5c8c\]\/50:hover {
+  box-shadow: 0 0 20px rgba(90, 92, 140, 0.5), 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon rotation and scale animation */
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+.group:hover .text-7xl {
+  animation: iconBounce 0.6s ease-in-out;
+}
+
+/* Button gradient animation */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.group\/btn:hover {
+  animation: gradientShift 0.6s ease;
+}
