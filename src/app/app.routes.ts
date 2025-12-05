@@ -10,12 +10,12 @@ import { DownloadComponent } from './pages/download/download.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'descarga', component: DownloadComponent },
   { path: 'legal/terminos', component: TermsComponent },
   { path: 'legal/privacidad', component: PrivacyComponent },
   { path: 'legal/cookies', component: CookiesComponent },
   { path: 'legal/aviso-legal', component: LegalNoticeComponent },
   { path: 'conocenos/equipo', component: EquipoComponent },
   { path: 'demo', component: DemoComponent },
+  { path: 'descarga', component: DownloadComponent },
   { path: '**', redirectTo: '' }
 ];

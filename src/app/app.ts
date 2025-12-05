@@ -1,11 +1,18 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit, DestroyRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ThemeService } from './services/theme.service';
+import { SeoService } from './services/seo.service';
+
+declare global {
+  interface Window {
+    va?: (...args: unknown[]) => void;
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -16,9 +23,11 @@ import { ThemeService } from './services/theme.service';
 })
 export class App implements OnInit, AfterViewInit, OnDestroy {
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
   // Inicializa el servicio de tema
   private readonly themeService = inject(ThemeService);
+  private readonly seo = inject(SeoService);
   private clickHandler?: (event: MouseEvent) => void;
 
   ngOnInit(): void {
@@ -35,6 +44,18 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
         if (url.startsWith('/legal/') || url.startsWith('/conocenos/') || url.startsWith('/demo')) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Registrar pageview para Vercel Analytics en SPA
+        window.va?.('pageview');
+
+        // Actualizar la etiqueta canonical según la ruta actual
+        this.seo.setCanonicalFromPath(url);
+
+        // Extraer datos SEO de la ruta más profunda y aplicarlos
+        let current = this.route.firstChild;
+        while (current?.firstChild) current = current.firstChild;
+        const data = current?.snapshot.data as { title?: string; description?: string; ogImage?: string; robots?: string } | undefined;
+        this.seo.applyRouteSeo(data || {});
       });
   }
 

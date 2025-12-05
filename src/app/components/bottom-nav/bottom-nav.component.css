@@ -13,8 +13,6 @@
   transform: translateY(0) !important;
   overflow-x: hidden !important;
   pointer-events: auto !important;
-  /* Asegurar que respete el safe-area-inset-bottom */
-  padding-bottom: env(safe-area-inset-bottom) !important;
 }
 
 /* Asegurar que el nav interno también esté visible y no cause overflow */
@@ -27,6 +25,8 @@
   overflow-x: hidden !important;
   box-sizing: border-box !important;
   position: relative !important;
+  /* Aplicar safe-area-inset-bottom directamente al nav */
+  padding-bottom: env(safe-area-inset-bottom) !important;
 }
 
 /* Asegurar que los contenedores internos no causen overflow */
