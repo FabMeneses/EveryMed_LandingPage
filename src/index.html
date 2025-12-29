@@ -94,11 +94,48 @@
   <link rel="prefetch" href="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" as="image">
   <link rel="prefetch" href="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" as="image">
 
+  <!-- Critical inline styles to prevent FOUC -->
+  <style>
+    /* Ocultar contenido hasta que Angular esté listo */
+    app-root:not(.app-loaded) {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    /* Mostrar contenido cuando esté listo */
+    app-root.app-loaded {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transition: opacity 0.2s ease-in;
+    }
+    
+    /* Prevenir scroll durante la carga */
+    html.loading,
+    html.loading body {
+      overflow: hidden !important;
+    }
+  </style>
 </head>
 
 <body class="font-sans notranslate">
   <app-root></app-root>
   <noscript>Por favor, habilita JavaScript para continuar usando esta aplicación.</noscript>
+  <script>
+    // Añadir clase loading al HTML para prevenir scroll durante la carga
+    document.documentElement.classList.add('loading');
+    
+    // Asegurar que los estilos críticos se apliquen inmediatamente
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        // Pequeño delay para asegurar que Angular haya comenzado a renderizar
+        setTimeout(function() {
+          // La clase 'app-loaded' será añadida por Angular cuando esté listo
+        }, 0);
+      });
+    }
+  </script>
 </body>
 
 </html>
