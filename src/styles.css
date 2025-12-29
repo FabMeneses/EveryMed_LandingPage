@@ -246,12 +246,13 @@ body::after {
   /* Force GPU acceleration */
 }
 
-/* Disable on mobile for performance */
+/* Optimized for mobile - reduced blur and size for better performance */
 @media (max-width: 768px) {
   body::after {
-    filter: blur(30px);
-    width: 400px;
-    height: 400px;
+    filter: blur(20px);
+    width: 300px;
+    height: 300px;
+    opacity: 0.8;
   }
 }
 
@@ -284,12 +285,13 @@ app-root::before {
   will-change: transform, opacity;
 }
 
-/* Disable on mobile for performance */
+/* Optimized for mobile - reduced blur and size for better performance */
 @media (max-width: 768px) {
   app-root::before {
-    filter: blur(35px);
-    width: 450px;
-    height: 450px;
+    filter: blur(25px);
+    width: 350px;
+    height: 350px;
+    opacity: 0.75;
   }
 }
 
@@ -318,12 +320,13 @@ app-root::after {
   transform: translate3d(0, 0, 0);
 }
 
-/* Disable on mobile for performance */
+/* Optimized for mobile - reduced blur and size for better performance */
 @media (max-width: 768px) {
   app-root::after {
-    filter: blur(32px);
-    width: 350px;
-    height: 350px;
+    filter: blur(22px);
+    width: 280px;
+    height: 280px;
+    opacity: 0.7;
   }
 }
 
@@ -350,10 +353,10 @@ html.dark app-root::after {
   transform: translate3d(0, 0, 0);
 }
 
-/* Disable on mobile for performance */
+/* Completely disable extra orbs on mobile for performance */
 @media (max-width: 768px) {
   .background-orb {
-    filter: blur(25px);
+    display: none;
   }
 }
 
@@ -486,6 +489,83 @@ html.dark app-root::after {
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.95;
+  }
+}
+
+/* =========================================================
+   Simplified animations for mobile devices
+   ========================================================= */
+
+/* Simplified animation for mobile - only 3 keyframes, no scale */
+@keyframes float-light-mobile-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(30px, -25px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes float-light-mobile-2 {
+
+  0%,
+  100% {
+    transform: translateY(-50%) translate(0, 0);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: translateY(-50%) translate(-30px, 15px);
+    opacity: 0.65;
+  }
+}
+
+@keyframes float-light-mobile-3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate(20px, 20px);
+    opacity: 0.6;
+  }
+}
+
+/* Apply simplified animations on mobile */
+@media (max-width: 768px) {
+  body::after {
+    animation: float-light-mobile-1 15s ease-in-out infinite;
+  }
+
+  app-root::before {
+    animation: float-light-mobile-2 18s ease-in-out infinite;
+  }
+
+  app-root::after {
+    animation: float-light-mobile-3 16s ease-in-out infinite;
+  }
+}
+
+/* =========================================================
+   Accessibility - Disable animations for users who prefer reduced motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  body::after,
+  app-root::before,
+  app-root::after,
+  .background-orb {
+    animation: none !important;
+    transform: translate3d(0, 0, 0);
   }
 }
 
