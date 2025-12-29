@@ -243,20 +243,10 @@ body::after {
   /* Sin animación para mejor rendimiento */
 }
 
-/* Optimización móvil - reducir significativamente o deshabilitar orbes */
+/* Optimización móvil - eliminar completamente los orbes de fondo */
 @media (max-width: 768px) {
   body::after {
-    width: 300px;
-    height: 300px;
-    filter: blur(60px);
-    opacity: 0.6;
-  }
-
-  /* Deshabilitar completamente en móviles pequeños */
-  @media (max-width: 480px) {
-    body::after {
-      display: none;
-    }
+    display: none !important;
   }
 }
 
@@ -288,19 +278,10 @@ app-root::before {
   /* Sin animación para mejor rendimiento */
 }
 
-/* Optimización móvil */
+/* Optimización móvil - eliminar completamente */
 @media (max-width: 768px) {
   app-root::before {
-    width: 300px;
-    height: 300px;
-    filter: blur(60px);
-    opacity: 0.5;
-  }
-
-  @media (max-width: 480px) {
-    app-root::before {
-      display: none;
-    }
+    display: none !important;
   }
 }
 
@@ -327,19 +308,10 @@ app-root::after {
   /* Sin animación para mejor rendimiento */
 }
 
-/* Optimización móvil */
+/* Optimización móvil - eliminar completamente */
 @media (max-width: 768px) {
   app-root::after {
-    width: 280px;
-    height: 280px;
-    filter: blur(60px);
-    opacity: 0.5;
-  }
-
-  @media (max-width: 480px) {
-    app-root::after {
-      display: none;
-    }
+    display: none !important;
   }
 }
 
@@ -585,50 +557,44 @@ body.dark * {
   transition-delay: 0.8s;
 }
 
-/* Optimización móvil - deshabilitar animate-pulse para mejor rendimiento */
+/* Optimización móvil agresiva - eliminar efectos costosos */
 @media (max-width: 768px) {
+  /* Eliminar animate-pulse completamente */
   .animate-pulse {
     animation: none !important;
   }
 
-  /* Reducir blur significativamente en móvil - solo para elementos decorativos (orbs de fondo) */
+  /* Eliminar TODOS los orbes decorativos en móvil */
   div[class*="absolute"][class*="rounded-full"][class*="blur-"] {
-    filter: blur(40px) !important;
+    display: none !important;
   }
 
-  div[class*="absolute"][class*="rounded-full"][class*="blur-\[80px\]"],
-  div[class*="absolute"][class*="rounded-full"][class*="blur-\[100px\]"] {
-    filter: blur(50px) !important;
+  /* Eliminar backdrop-blur en móvil - muy costoso para rendimiento */
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
   }
 
-  div[class*="absolute"][class*="rounded-full"][class*="blur-\[120px\]"] {
-    filter: blur(60px) !important;
+  /* Reducir shadow complexity en móvil */
+  [class*="shadow-2xl"] {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
   }
 
-  div[class*="absolute"][class*="rounded-full"][class*="blur-\[140px\]"],
-  div[class*="absolute"][class*="rounded-full"][class*="blur-\[150px\]"] {
-    filter: blur(70px) !important;
-  }
-
-  /* Reducir backdrop-blur en móvil - solo en elementos con backdrop */
-  [class*="backdrop-blur"]:not(section):not(header):not(footer):not(nav) {
-    backdrop-filter: blur(4px) !important;
-  }
-
-  [class*="backdrop-blur-xl"]:not(section):not(header):not(footer):not(nav) {
-    backdrop-filter: blur(6px) !important;
-  }
-
-  [class*="backdrop-blur-md"]:not(section):not(header):not(footer):not(nav) {
-    backdrop-filter: blur(4px) !important;
+  /* Simplificar transiciones */
+  [class*="transition-all"] {
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
   }
 }
 
-/* Optimización adicional para móviles pequeños - solo elementos decorativos */
+/* Optimización adicional para móviles pequeños */
 @media (max-width: 480px) {
-  /* Reducir aún más backdrop-blur - excluir componentes principales */
-  [class*="backdrop-blur"]:not(section):not(header):not(footer):not(nav):not([class*="bg-white"]):not([class*="bg-gray"]) {
-    backdrop-filter: blur(2px) !important;
+  /* Eliminar hover effects en móvil */
+  [class*="hover:"] {
+    /* Mantener hover solo para elementos interactivos esenciales */
+  }
+
+  /* Simplificar aún más sombras */
+  [class*="shadow"] {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
   }
 }
 
@@ -662,5 +628,34 @@ body.dark * {
   .content-with-bottom-nav {
     padding-bottom: 0 !important;
   }
+}
+
+/* =========================================================
+   Bordes discretos para componentes en modo oscuro
+   ========================================================= */
+
+/* Mejorar visibilidad de bordes existentes que son muy sutiles en modo oscuro */
+html.dark [class*="border-white/20"]:not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]),
+html.dark [class*="border-gray-700/30"]:not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]) {
+  border-color: rgb(105 105 125 / 0.45) !important;
+}
+
+/* Aplicar borde discreto a tarjetas y contenedores principales sin borde explícito */
+html.dark div[class*="rounded-3xl"][class*="bg-"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]),
+html.dark div[class*="rounded-2xl"][class*="bg-"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]) {
+  border: 1px solid rgb(105 105 125 / 0.3) !important;
+}
+
+/* Componentes con backdrop-blur que no tienen borde explícito */
+html.dark [class*="backdrop-blur-xl"][class*="bg-"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]),
+html.dark [class*="backdrop-blur-sm"][class*="bg-"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]) {
+  border: 1px solid rgb(105 105 125 / 0.3) !important;
+}
+
+/* Contenedores con fondos semitransparentes en secciones principales */
+html.dark section div[class*="bg-white/"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]):not([class*="pointer-events"]),
+html.dark section div[class*="bg-gray-900/"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]):not([class*="pointer-events"]),
+html.dark section div[class*="bg-gray-800/"]:not([class*="border-"]):not([class*="rounded-full"]):not([class*="absolute"]):not([class*="fixed"]):not([class*="pointer-events"]) {
+  border: 1px solid rgb(105 105 125 / 0.3) !important;
 }
 
