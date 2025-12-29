@@ -3,6 +3,7 @@
   "short_name": "EveryMed",
   "description": "Plataforma integral de gestión médica diseñada para médicos individuales, clínicas pequeñas y grandes centros de salud",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#5a5c8c",
@@ -26,8 +27,14 @@
       "type": "image/x-icon"
     }
   ],
-  "categories": ["medical", "health", "productivity"],
+  "categories": [
+    "medical",
+    "health",
+    "productivity",
+    "business"
+  ],
   "lang": "es",
-  "dir": "ltr"
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": []
 }
-
