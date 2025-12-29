@@ -1,22 +1,15 @@
 <section id="inicio"
   class="relative px-4 overflow-hidden min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-16"
   aria-label="Sección principal de presentación">
-  <!-- Background decorative elements -->
+  <!-- Background decorative elements - simplified -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- Animated gradient orbs - optimized blur for mobile -->
+    <!-- Simple gradient orb - top left -->
     <div
-      class="absolute top-1/4 -left-1/4 w-80 h-80 md:w-96 md:h-96 bg-[#5a5c8c] rounded-full blur-[40px] md:blur-[50px] opacity-20 dark:opacity-30 animate-pulse">
+      class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[80px] opacity-10 dark:opacity-15">
     </div>
+    <!-- Simple gradient orb - bottom right -->
     <div
-      class="absolute bottom-1/4 -right-1/4 w-96 h-96 md:w-[500px] md:h-[500px] bg-[#9ca0c7] rounded-full blur-[45px] md:blur-[60px] opacity-20 dark:opacity-30 animate-pulse"
-      style="animation-delay: 1s;"></div>
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-[#5a5c8c]/10 to-[#9ca0c7]/10 rounded-full blur-[50px] md:blur-[65px] opacity-30">
-    </div>
-
-    <!-- Grid pattern overlay -->
-    <div
-      class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] dark:opacity-20">
+      class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#9ca0c7] rounded-full blur-[80px] opacity-10 dark:opacity-15">
     </div>
   </div>
 
@@ -70,7 +63,7 @@
         </div>
 
         <!-- Trust Indicators -->
-        <div class="flex flex-wrap items-center gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
+        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
           <div class="flex items-center gap-3">
             <div class="flex -space-x-3">
               @for (iconType of getIcons(); track $index) {
@@ -118,11 +111,7 @@
         <!-- Main card container -->
         <div class="relative z-10">
           <div
-            class="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-6 md:p-12 shadow-2xl border border-white/20 dark:border-gray-700/30 overflow-hidden">
-            <!-- Inner gradient border effect - optimized blur -->
-            <div
-              class="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#5a5c8c]/20 via-[#9ca0c7]/20 to-[#5a5c8c]/20 dark:from-[#9ca0c7]/30 dark:via-[#5a5c8c]/30 dark:to-[#9ca0c7]/30 opacity-50 blur-[35px] md:blur-[45px]">
-            </div>
+            class="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-6 md:p-12 shadow-xl border border-white/20 dark:border-gray-700/30 overflow-hidden">
 
             <!-- Content area -->
             <div class="relative z-10 w-full flex flex-col items-center justify-center space-y-8">
@@ -130,22 +119,20 @@
               <div class="flex items-center justify-center">
                 <div class="relative w-32 h-32 md:w-40 md:h-40">
                   <!-- Efecto de brillo - optimized blur -->
-                  <div
-                    class="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-[35px] md:blur-[45px] opacity-70">
-                  </div>
-                  <div
-                    class="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent">
-                  </div>
                   <!-- Contenedor del logo -->
                   <div
                     class="relative w-full h-full rounded-3xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-2xl shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 hover:scale-105 group"
                     role="img" aria-label="Logo de EveryMed">
-                    <img src="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="Logo EveryMed modo claro"
+                    <img ngSrc="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="Logo EveryMed modo claro"
+                      width="96" height="96"
                       class="w-20 h-20 md:w-24 md:h-24 object-contain block dark:hidden drop-shadow-lg"
-                      loading="eager" />
-                    <img src="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="Logo EveryMed modo oscuro"
+                      priority
+                      fetchpriority="high" />
+                    <img ngSrc="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="Logo EveryMed modo oscuro"
+                      width="96" height="96"
                       class="w-20 h-20 md:w-24 md:h-24 object-contain hidden dark:block drop-shadow-lg"
-                      loading="eager" />
+                      priority
+                      fetchpriority="high" />
                   </div>
                 </div>
               </div>
@@ -204,13 +191,6 @@
               </div>
             </div>
 
-            <!-- Floating elements - optimized blur -->
-            <div
-              class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#9ca0c7] to-[#5a5c8c] rounded-2xl blur-[28px] md:blur-[35px] opacity-40 animate-pulse">
-            </div>
-            <div
-              class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-[#5a5c8c] to-[#9ca0c7] rounded-2xl blur-[32px] md:blur-[40px] opacity-30 animate-pulse"
-              style="animation-delay: 1.5s;"></div>
           </div>
         </div>
 

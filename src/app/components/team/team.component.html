@@ -3,12 +3,11 @@
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[120px] opacity-10 dark:opacity-20"></div>
     <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#9ca0c7] rounded-full blur-[140px] opacity-10 dark:opacity-20"></div>
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] dark:opacity-10"></div>
   </div>
 
   <div class="max-w-7xl mx-auto relative z-10">
     <!-- Section Header -->
-    <div 
+    <div
       appAnimateOnScroll
       class="text-center mb-16 animate-on-scroll">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5a5c8c]/10 via-[#9ca0c7]/10 to-[#5a5c8c]/10 dark:from-[#9ca0c7]/20 dark:via-[#5a5c8c]/20 dark:to-[#9ca0c7]/20 backdrop-blur-sm border border-[#5a5c8c]/20 dark:border-[#9ca0c7]/30 mb-6">
@@ -24,7 +23,7 @@
     </div>
 
     <!-- Company Info -->
-    <div 
+    <div
       appAnimateOnScroll
       class="mb-12 animate-on-scroll animate-delay-100">
       <div class="bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-xl border border-white/20 dark:border-gray-700/30 text-center">
@@ -40,14 +39,14 @@
     </div>
 
     <!-- Team Members Grid -->
-    <div 
+    <div
       appAnimateOnScroll
       class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-on-scroll animate-delay-200">
       @for (member of teamMembers; track member.name) {
         <div class="group relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-gray-700/30 overflow-hidden">
           <!-- Gradient overlay on hover -->
           <div class="absolute inset-0 bg-gradient-to-br from-[#5a5c8c]/5 via-[#9ca0c7]/5 to-[#5a5c8c]/5 dark:from-[#9ca0c7]/10 dark:via-[#5a5c8c]/10 dark:to-[#9ca0c7]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          
+
           <div class="relative z-10">
             <!-- Avatar -->
             <div class="flex items-center gap-6 mb-6">
@@ -71,9 +70,9 @@
 
             <!-- Social Links -->
             <div class="flex items-center gap-4">
-              <a 
-                [href]="member.github" 
-                target="_blank" 
+              <a
+                [href]="member.github"
+                target="_blank"
                 rel="noopener noreferrer"
                 class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-[#9ca0c7]/10 dark:from-[#9ca0c7]/20 dark:to-[#5a5c8c]/20 text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] hover:bg-gradient-to-br hover:from-[#5a5c8c]/20 hover:to-[#9ca0c7]/20 dark:hover:from-[#9ca0c7]/30 dark:hover:to-[#5a5c8c]/30 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -82,9 +81,9 @@
                 <span class="text-sm font-medium">GitHub</span>
               </a>
               @if (member.portfolio) {
-                <a 
-                  [href]="member.portfolio" 
-                  target="_blank" 
+                <a
+                  [href]="member.portfolio"
+                  target="_blank"
                   rel="noopener noreferrer"
                   class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-br from-[#5a5c8c]/10 to-[#9ca0c7]/10 dark:from-[#9ca0c7]/20 dark:to-[#5a5c8c]/20 text-gray-700 dark:text-gray-300 hover:text-[#5a5c8c] dark:hover:text-[#9ca0c7] hover:bg-gradient-to-br hover:from-[#5a5c8c]/20 hover:to-[#9ca0c7]/20 dark:hover:from-[#9ca0c7]/30 dark:hover:to-[#5a5c8c]/30 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +94,7 @@
               }
             </div>
           </div>
-          
+
           <!-- Decorative corner element -->
           <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#5a5c8c]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
