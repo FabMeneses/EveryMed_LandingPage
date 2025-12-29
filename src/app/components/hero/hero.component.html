@@ -1,16 +1,17 @@
 <section id="inicio"
-  class="relative px-4 overflow-hidden min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-16">
+  class="relative px-4 overflow-hidden min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-16"
+  aria-label="Sección principal de presentación">
   <!-- Background decorative elements -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- Animated gradient orbs -->
+    <!-- Animated gradient orbs - optimized blur for mobile -->
     <div
-      class="absolute top-1/4 -left-1/4 w-96 h-96 bg-[#5a5c8c] rounded-full blur-[120px] opacity-20 dark:opacity-30 animate-pulse">
+      class="absolute top-1/4 -left-1/4 w-80 h-80 md:w-96 md:h-96 bg-[#5a5c8c] rounded-full blur-[40px] md:blur-[50px] opacity-20 dark:opacity-30 animate-pulse">
     </div>
     <div
-      class="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-[#9ca0c7] rounded-full blur-[140px] opacity-20 dark:opacity-30 animate-pulse"
+      class="absolute bottom-1/4 -right-1/4 w-96 h-96 md:w-[500px] md:h-[500px] bg-[#9ca0c7] rounded-full blur-[45px] md:blur-[60px] opacity-20 dark:opacity-30 animate-pulse"
       style="animation-delay: 1s;"></div>
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#5a5c8c]/10 to-[#9ca0c7]/10 rounded-full blur-[150px] opacity-30">
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-[#5a5c8c]/10 to-[#9ca0c7]/10 rounded-full blur-[50px] md:blur-[65px] opacity-30">
     </div>
 
     <!-- Grid pattern overlay -->
@@ -50,18 +51,20 @@
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 pt-4">
           <a routerLink="/descarga"
-            class="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-[#5a5c8c] to-[#9ca0c7] text-white font-semibold text-lg shadow-xl shadow-[#5a5c8c]/30 dark:shadow-[#9ca0c7]/30 hover:shadow-2xl hover:shadow-[#5a5c8c]/40 dark:hover:shadow-[#9ca0c7]/40 transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden cursor-pointer">
+            class="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-[#5a5c8c] to-[#9ca0c7] text-white font-semibold text-lg shadow-xl shadow-[#5a5c8c]/30 dark:shadow-[#9ca0c7]/30 hover:shadow-2xl hover:shadow-[#5a5c8c]/40 dark:hover:shadow-[#9ca0c7]/40 transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden cursor-pointer"
+            aria-label="Comenzar a usar EveryMed ahora" role="button">
             <span class="relative z-10 flex items-center gap-2">
               Comenzar ahora
-              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <span class="group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true">→</span>
             </span>
             <div
               class="absolute inset-0 bg-gradient-to-r from-[#9ca0c7] to-[#5a5c8c] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             </div>
           </a>
           <a routerLink="/demo"
-            class="group px-8 py-4 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white font-semibold text-lg border-2 border-gray-200 dark:border-gray-700 hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer">
-            <span class="text-[#5a5c8c] dark:text-[#9ca0c7]">▶</span>
+            class="group px-8 py-4 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white font-semibold text-lg border-2 border-gray-200 dark:border-gray-700 hover:border-[#5a5c8c] dark:hover:border-[#9ca0c7] hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
+            aria-label="Ver demostración de EveryMed" role="button">
+            <span class="text-[#5a5c8c] dark:text-[#9ca0c7]" aria-hidden="true">▶</span>
             Ver demo
           </a>
         </div>
@@ -116,9 +119,9 @@
         <div class="relative z-10">
           <div
             class="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-6 md:p-12 shadow-2xl border border-white/20 dark:border-gray-700/30 overflow-hidden">
-            <!-- Inner gradient border effect -->
+            <!-- Inner gradient border effect - optimized blur -->
             <div
-              class="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#5a5c8c]/20 via-[#9ca0c7]/20 to-[#5a5c8c]/20 dark:from-[#9ca0c7]/30 dark:via-[#5a5c8c]/30 dark:to-[#9ca0c7]/30 opacity-50 blur-xl">
+              class="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#5a5c8c]/20 via-[#9ca0c7]/20 to-[#5a5c8c]/20 dark:from-[#9ca0c7]/30 dark:via-[#5a5c8c]/30 dark:to-[#9ca0c7]/30 opacity-50 blur-[35px] md:blur-[45px]">
             </div>
 
             <!-- Content area -->
@@ -126,20 +129,23 @@
               <!-- Logo grande -->
               <div class="flex items-center justify-center">
                 <div class="relative w-32 h-32 md:w-40 md:h-40">
-                  <!-- Efecto de brillo -->
+                  <!-- Efecto de brillo - optimized blur -->
                   <div
-                    class="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-xl opacity-70">
+                    class="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#5a5c8c]/30 via-[#9ca0c7]/15 to-[#5a5c8c]/30 dark:from-[#9ca0c7]/40 dark:via-[#5a5c8c]/25 dark:to-[#9ca0c7]/40 blur-[35px] md:blur-[45px] opacity-70">
                   </div>
                   <div
                     class="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#9ca0c7]/20 dark:to-transparent">
                   </div>
                   <!-- Contenedor del logo -->
                   <div
-                    class="relative w-full h-full rounded-3xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-2xl shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 hover:scale-105 group">
-                    <img src="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="EveryMed Logo"
-                      class="w-20 h-20 md:w-24 md:h-24 object-contain block dark:hidden drop-shadow-lg" />
-                    <img src="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="EveryMed Logo"
-                      class="w-20 h-20 md:w-24 md:h-24 object-contain hidden dark:block drop-shadow-lg" />
+                    class="relative w-full h-full rounded-3xl bg-gradient-to-br from-[#5a5c8c]/8 via-[#9ca0c7]/5 to-[#5a5c8c]/8 dark:from-[#9ca0c7]/15 dark:via-[#5a5c8c]/8 dark:to-[#9ca0c7]/15 border border-[#5a5c8c]/25 dark:border-[#9ca0c7]/35 flex items-center justify-center shadow-2xl shadow-[#5a5c8c]/20 dark:shadow-[#9ca0c7]/30 backdrop-blur-sm transition-all duration-300 hover:scale-105 group"
+                    role="img" aria-label="Logo de EveryMed">
+                    <img src="/assets/icons-app/everymed-icon/logo-everymed-claro.svg" alt="Logo EveryMed modo claro"
+                      class="w-20 h-20 md:w-24 md:h-24 object-contain block dark:hidden drop-shadow-lg"
+                      loading="eager" />
+                    <img src="/assets/icons-app/everymed-icon/logo-everymed-obscuro.svg" alt="Logo EveryMed modo oscuro"
+                      class="w-20 h-20 md:w-24 md:h-24 object-contain hidden dark:block drop-shadow-lg"
+                      loading="eager" />
                   </div>
                 </div>
               </div>
@@ -198,12 +204,12 @@
               </div>
             </div>
 
-            <!-- Floating elements -->
+            <!-- Floating elements - optimized blur -->
             <div
-              class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#9ca0c7] to-[#5a5c8c] rounded-2xl blur-2xl opacity-40 animate-pulse">
+              class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#9ca0c7] to-[#5a5c8c] rounded-2xl blur-[28px] md:blur-[35px] opacity-40 animate-pulse">
             </div>
             <div
-              class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-[#5a5c8c] to-[#9ca0c7] rounded-2xl blur-3xl opacity-30 animate-pulse"
+              class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-[#5a5c8c] to-[#9ca0c7] rounded-2xl blur-[32px] md:blur-[40px] opacity-30 animate-pulse"
               style="animation-delay: 1.5s;"></div>
           </div>
         </div>

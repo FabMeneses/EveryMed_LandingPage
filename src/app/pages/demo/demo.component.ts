@@ -32,8 +32,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Inicio de Sesión',
       description:
         'Pantalla de acceso seguro con autenticación mediante credenciales. Interfaz intuitiva que garantiza un inicio de sesión rápido y protegido.',
-      imageLight: '/assets/images/demo/login_claro.png',
-      imageDark: '/assets/images/demo/login_obscuro.png',
+      imageLight: '/assets/images-webp/demo/login_claro.webp',
+      imageDark: '/assets/images-webp/demo/login_obscuro.webp',
       features: ['Autenticación segura', 'Recordatorio de contraseña', 'Modo claro y oscuro'],
     },
     {
@@ -41,8 +41,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Panel de Control',
       description:
         'Vista general de tu clínica con métricas clave en tiempo real. Monitorea citas, pacientes e ingresos de un vistazo.',
-      imageLight: '/assets/images/demo/dashboard_claro.png',
-      imageDark: '/assets/images/demo/dashboard_obscuro.png',
+      imageLight: '/assets/images-webp/demo/dashboard_claro.webp',
+      imageDark: '/assets/images-webp/demo/dashboard_obscuro.webp',
       videoDark: '/assets/videos/demo/dashboard_obscuro.mp4',
       features: ['Métricas en tiempo real', 'Gráficos interactivos', 'Vista personalizable'],
     },
@@ -51,8 +51,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Gestión de Citas',
       description:
         'Sistema completo de agenda para gestionar todas tus citas médicas con una interfaz calendario intuitiva.',
-      imageLight: '/assets/images/demo/agenda_claro.png',
-      imageDark: '/assets/images/demo/agenda_obscuro.png',
+      imageLight: '/assets/images-webp/demo/agenda_claro.webp',
+      imageDark: '/assets/images-webp/demo/agenda_obscuro.webp',
       videoDark: '/assets/videos/demo/agenda_obscuro.mp4',
       features: ['Vista calendario y lista', 'Filtros avanzados', 'Recordatorios automáticos'],
     },
@@ -61,8 +61,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Búsqueda de Expedientes',
       description:
         'Encuentra rápidamente los expedientes clínicos con nuestro sistema de búsqueda avanzada.',
-      imageLight: '/assets/images/demo/busqueda_claro.png',
-      imageDark: '/assets/images/demo/busqueda_obscuro.png',
+      imageLight: '/assets/images-webp/demo/busqueda_claro.webp',
+      imageDark: '/assets/images-webp/demo/busqueda_obscuro.webp',
       features: ['Búsqueda instantánea', 'Filtros múltiples', 'Vista previa de resultados'],
     },
     {
@@ -70,8 +70,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Gestión de Equipo',
       description:
         'Administra todo tu equipo médico desde un solo lugar. Gestiona roles, permisos y horarios.',
-      imageLight: '/assets/images/demo/equipo_claro.png',
-      imageDark: '/assets/images/demo/equipo_obscuro.png',
+      imageLight: '/assets/images-webp/demo/equipo_claro.webp',
+      imageDark: '/assets/images-webp/demo/equipo_obscuro.webp',
       features: ['Gestión de roles', 'Asignación de permisos', 'Control de acceso'],
     },
     {
@@ -79,8 +79,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Configuración de Clínica',
       description:
         'Personaliza la configuración general de tu clínica. Ajusta datos, contacto y horarios.',
-      imageLight: '/assets/images/demo/clinica_claro.png',
-      imageDark: '/assets/images/demo/clinica_obscuro.png',
+      imageLight: '/assets/images-webp/demo/clinica_claro.webp',
+      imageDark: '/assets/images-webp/demo/clinica_obscuro.webp',
       features: ['Datos del establecimiento', 'Configuración general', 'Personalización de marca'],
     },
     {
@@ -88,8 +88,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Ajustes del Sistema',
       description:
         'Configura las preferencias del sistema. Personaliza notificaciones, temas e idioma.',
-      imageLight: '/assets/images/demo/ajustes_claro.png',
-      imageDark: '/assets/images/demo/ajustes_obscuro.png',
+      imageLight: '/assets/images-webp/demo/ajustes_claro.webp',
+      imageDark: '/assets/images-webp/demo/ajustes_obscuro.webp',
       features: ['Preferencias de usuario', 'Configuración avanzada', 'Temas personalizables'],
     },
     {
@@ -97,8 +97,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Centro de Notificaciones',
       description:
         'Mantente informado con alertas sobre citas, recordatorios y actualizaciones del sistema.',
-      imageLight: '/assets/images/demo/notificaciones_claro.png',
-      imageDark: '/assets/images/demo/notificaciones_obscuro.png',
+      imageLight: '/assets/images-webp/demo/notificaciones_claro.webp',
+      imageDark: '/assets/images-webp/demo/notificaciones_obscuro.webp',
       videoDark: '/assets/videos/demo/notificaciones_obscuro.mp4',
       features: ['Notificaciones en tiempo real', 'Historial completo', 'Configuración de alertas'],
     },
@@ -107,8 +107,8 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'Sistema de Recordatorios',
       description:
         'Crea y gestiona recordatorios personalizados para citas, seguimientos y tareas.',
-      imageLight: '/assets/images/demo/recordatorios_claro.png',
-      imageDark: '/assets/images/demo/recordatorios_obscuro.png',
+      imageLight: '/assets/images-webp/demo/recordatorios_claro.webp',
+      imageDark: '/assets/images-webp/demo/recordatorios_obscuro.webp',
       features: ['Recordatorios personalizados', 'Notificaciones automáticas', 'Gestión de tareas'],
     },
     {
@@ -116,10 +116,10 @@ export class DemoComponent implements OnInit, OnDestroy {
       title: 'También se puede usar en Móvil',
       description:
         'Accede y gestiona tu clínica desde cualquier dispositivo móvil o tablet. Disfruta de la misma funcionalidad completa con una interfaz optimizada para pantallas más pequeñas.',
-      imageLight: '/assets/images/demo/mobile/dashboard_movil_claro.png',
-      imageDark: '/assets/images/demo/mobile/dashboard_movil_obscuro.png',
-      secondaryImageLight: '/assets/images/demo/mobile/agenda_movil_claro.png',
-      secondaryImageDark: '/assets/images/demo/mobile/agenda_movil_obscuro.png',
+      imageLight: '/assets/images-webp/demo/mobile/dashboard_movil_claro.webp',
+      imageDark: '/assets/images-webp/demo/mobile/dashboard_movil_obscuro.webp',
+      secondaryImageLight: '/assets/images-webp/demo/mobile/agenda_movil_claro.webp',
+      secondaryImageDark: '/assets/images-webp/demo/mobile/agenda_movil_obscuro.webp',
       features: [
         'Interfaz optimizada para móvil',
         'Acceso en cualquier dispositivo',
@@ -132,9 +132,9 @@ export class DemoComponent implements OnInit, OnDestroy {
   readonly demoThemes = signal<Record<string, Theme>>({});
   readonly showVideo = signal<Record<string, boolean>>({});
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 
   // Preferences (Theme only)
   getTheme(demoId: string): Theme {

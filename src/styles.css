@@ -59,6 +59,143 @@ body {
   max-width: 100vw;
   /* Prevent Tailwind or other styles from overriding background */
   background: transparent !important;
+
+  /* iOS-specific fixes */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Improve touch scrolling on iOS */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text size adjustment on orientation change on iOS */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix for iOS input zoom */
+@media screen and (max-width: 768px) {
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   Critical Rendering Path Optimizations
+   ========================================================= */
+
+/* Prevent layout shifts */
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Optimize offscreen content rendering */
+app-footer,
+app-cta,
+app-faq,
+app-testimonials {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Ensure above-the-fold content renders first */
+app-hero {
+  content-visibility: visible;
+}
+
+/* Prevent footer from rendering before main content */
+app-footer {
+  will-change: auto;
+}
+
+
+/* =========================================================
+   Accessibility - Focus Styles
+   ========================================================= */
+
+/* Enhanced focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #5a5c8c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Dark mode focus */
+html.dark a:focus-visible,
+html.dark button:focus-visible,
+html.dark input:focus-visible,
+html.dark textarea:focus-visible,
+html.dark select:focus-visible {
+  outline-color: #9ca0c7;
+}
+
+/* Remove default focus for mouse users */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* =========================================================
+   Browser-Specific Fixes
+   ========================================================= */
+
+/* Safari image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Prevent iOS Safari from highlighting tapped elements */
+button,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Fix for Safari flexbox rendering */
+@supports (-webkit-appearance: none) {
+
+  button,
+  input,
+  select,
+  textarea {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Prevent zoom on iOS when focusing inputs */
+@supports (-webkit-touch-callout: none) {
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='number'],
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Better font rendering on Windows */
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  body {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 /* =========================================================
@@ -94,16 +231,28 @@ body.dark::before {
 body::after {
   content: '';
   position: fixed;
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   border-radius: 50%;
   z-index: -9;
   pointer-events: none;
   top: 15%;
   left: 20%;
   background: radial-gradient(circle, rgba(90, 92, 140, 0.15) 0%, transparent 70%) !important;
-  filter: blur(80px);
+  filter: blur(50px);
   animation: float-light-1 20s ease-in-out infinite;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  /* Force GPU acceleration */
+}
+
+/* Disable on mobile for performance */
+@media (max-width: 768px) {
+  body::after {
+    filter: blur(30px);
+    width: 400px;
+    height: 400px;
+  }
 }
 
 html.dark body::after {
@@ -121,17 +270,27 @@ body.dark::after {
 app-root::before {
   content: '';
   position: fixed;
-  width: 900px;
-  height: 900px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
   z-index: -9;
   pointer-events: none;
   top: 50%;
   right: 20%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translate3d(0, 0, 0);
   background: radial-gradient(circle, rgba(90, 92, 140, 0.12) 0%, transparent 70%) !important;
-  filter: blur(100px);
+  filter: blur(60px);
   animation: float-light-2 25s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Disable on mobile for performance */
+@media (max-width: 768px) {
+  app-root::before {
+    filter: blur(35px);
+    width: 450px;
+    height: 450px;
+  }
 }
 
 html.dark app-root::before {
@@ -145,16 +304,27 @@ html.dark app-root::before {
 app-root::after {
   content: '';
   position: fixed;
-  width: 700px;
-  height: 700px;
+  width: 550px;
+  height: 550px;
   border-radius: 50%;
   z-index: -9;
   pointer-events: none;
   bottom: 15%;
   left: 60%;
   background: radial-gradient(circle, rgba(90, 92, 140, 0.1) 0%, transparent 70%) !important;
-  filter: blur(90px);
+  filter: blur(55px);
   animation: float-light-3 22s ease-in-out infinite;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Disable on mobile for performance */
+@media (max-width: 768px) {
+  app-root::after {
+    filter: blur(32px);
+    width: 350px;
+    height: 350px;
+  }
 }
 
 html.dark app-root::after {
@@ -175,25 +345,48 @@ html.dark app-root::after {
   pointer-events: none;
   z-index: -11;
   border-radius: 9999px;
-  filter: blur(72px);
+  filter: blur(45px);
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Disable on mobile for performance */
+@media (max-width: 768px) {
+  .background-orb {
+    filter: blur(25px);
+  }
 }
 
 .background-orb-top-right {
-  width: 520px;
-  height: 520px;
+  width: 400px;
+  height: 400px;
   top: 6%;
   right: 4%;
   background: radial-gradient(circle, rgba(90, 92, 140, 0.16) 0%, transparent 70%);
   animation: float-light-2 26s ease-in-out infinite;
 }
 
+@media (max-width: 768px) {
+  .background-orb-top-right {
+    width: 250px;
+    height: 250px;
+  }
+}
+
 .background-orb-bottom-left {
-  width: 460px;
-  height: 460px;
+  width: 350px;
+  height: 350px;
   bottom: 4%;
   left: 4%;
   background: radial-gradient(circle, rgba(90, 92, 140, 0.12) 0%, transparent 70%);
   animation: float-light-3 28s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .background-orb-bottom-left {
+    width: 220px;
+    height: 220px;
+  }
 }
 
 /* =========================================================
@@ -205,22 +398,27 @@ html.dark app-root::after {
     transform: translate(0, 0) scale(1);
     opacity: 0.95;
   }
+
   20% {
     transform: translate(60px, -50px) scale(1.12);
     opacity: 0.9;
   }
+
   40% {
     transform: translate(-40px, 40px) scale(0.96);
     opacity: 0.85;
   }
+
   60% {
     transform: translate(30px, 10px) scale(1.08);
     opacity: 0.9;
   }
+
   80% {
     transform: translate(-20px, -35px) scale(0.98);
     opacity: 0.88;
   }
+
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.95;
@@ -232,22 +430,27 @@ html.dark app-root::after {
     transform: translateY(-50%) translate(0, 0) scale(1);
     opacity: 0.95;
   }
+
   20% {
     transform: translateY(-50%) translate(-55px, 25px) scale(1.08) rotate(1deg);
     opacity: 0.88;
   }
+
   40% {
     transform: translateY(-50%) translate(25px, -35px) scale(0.94) rotate(-0.5deg);
     opacity: 0.82;
   }
+
   60% {
     transform: translateY(-50%) translate(-35px, 10px) scale(1.06);
     opacity: 0.9;
   }
+
   80% {
     transform: translateY(-50%) translate(45px, -15px) scale(0.97);
     opacity: 0.87;
   }
+
   100% {
     transform: translateY(-50%) translate(0, 0) scale(1);
     opacity: 0.95;
@@ -259,22 +462,27 @@ html.dark app-root::after {
     transform: translate(0, 0) scale(1);
     opacity: 0.95;
   }
+
   20% {
     transform: translate(45px, 55px) scale(1.14);
     opacity: 0.9;
   }
+
   40% {
     transform: translate(-50px, -35px) scale(0.9);
     opacity: 0.78;
   }
+
   60% {
     transform: translate(25px, 30px) scale(1.05);
     opacity: 0.88;
   }
+
   80% {
     transform: translate(-35px, -45px) scale(0.93);
     opacity: 0.8;
   }
+
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.95;
@@ -330,9 +538,11 @@ body.dark ::-webkit-scrollbar-thumb:hover {
     background: #0a0b14;
     border-radius: 10px;
   }
+
   ::-webkit-scrollbar-thumb {
     background-color: rgb(156 160 199 / 0.6);
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(156 160 199 / 0.9);
   }
@@ -382,11 +592,13 @@ body.dark * {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 .animate-fade-in-up {
   animation: fade-in-up 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -395,10 +607,12 @@ body.dark * {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
+
 .animate-fade-in {
   animation: fade-in 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -408,11 +622,13 @@ body.dark * {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 .animate-fade-in-down {
   animation: fade-in-down 0.24s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -422,11 +638,13 @@ body.dark * {
     opacity: 0;
     transform: scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
+
 .animate-fade-in-scale {
   animation: fade-in-scale 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -489,30 +707,38 @@ body.dark * {
 .animate-delay-100 {
   transition-delay: 0.1s;
 }
+
 .animate-delay-200 {
   transition-delay: 0.2s;
 }
+
 .animate-delay-300 {
   transition-delay: 0.3s;
 }
+
 .animate-delay-400 {
   transition-delay: 0.4s;
 }
+
 .animate-delay-500 {
   transition-delay: 0.5s;
 }
+
 .animate-delay-600 {
   transition-delay: 0.6s;
 }
+
 .animate-delay-700 {
   transition-delay: 0.7s;
 }
+
 .animate-delay-800 {
   transition-delay: 0.8s;
 }
 
 /* Reducir movimiento para usuarios que lo prefieren */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-on-scroll,
   .animate-fade-up,
   .animate-fade-left,

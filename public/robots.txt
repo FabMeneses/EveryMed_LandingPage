@@ -1,12 +1,24 @@
+# Sitemap para EveryMed Landing Page
+# https://everymed-landing.everymed.online
+
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://everymed-landingpage.vercel.app/sitemap.xml
+Sitemap: https://everymed-landing.everymed.online/sitemap.xml
 
-# Disallow admin and private areas if any
-Disallow: /admin/
-Disallow: /api/
+# Páginas importantes (crawl con mayor frecuencia)
+Crawl-delay: 0
 
+# Deshabilitar crawling de assets
+Disallow: /assets/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.json$
 
-
+# Permitir crawling de imágenes
+Allow: /assets/images-webp/
+Allow: /assets/images/
+Allow: /assets/icons-app/
+Allow: /favicon.png
+Allow: /favicon.svg
