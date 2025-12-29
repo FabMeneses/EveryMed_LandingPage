@@ -3,13 +3,9 @@
     <div
       appAnimateOnScroll
       class="relative bg-gradient-to-br from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] rounded-3xl p-10 md:p-16 lg:p-20 shadow-2xl overflow-hidden animate-on-scroll">
-      <!-- Decorative elements -->
-      <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
-
-      <!-- Grid pattern overlay -->
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <!-- Decorative elements - simplified -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-white/8 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/8 rounded-full blur-[100px]"></div>
 
       <div class="relative z-10 text-center space-y-8">
         <h2 class="text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight">
@@ -23,7 +19,7 @@
         <!-- Benefits -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto py-8">
           @for (benefit of benefits; track benefit) {
-            <div class="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/20">
+            <div class="flex items-center gap-3 text-white bg-white/10 rounded-xl px-4 py-3 border border-white/20">
               <span class="text-2xl">✓</span>
               <span class="font-medium">{{ benefit }}</span>
             </div>

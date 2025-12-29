@@ -241,7 +241,6 @@ body::after {
   background: radial-gradient(circle, rgba(90, 92, 140, 0.15) 0%, transparent 70%) !important;
   filter: blur(50px);
   animation: float-light-1 20s ease-in-out infinite;
-  will-change: transform, opacity;
   transform: translate3d(0, 0, 0);
   /* Force GPU acceleration */
 }
@@ -253,6 +252,15 @@ body::after {
     width: 300px;
     height: 300px;
     opacity: 0.8;
+    animation-duration: 15s;
+    will-change: auto; /* Remove will-change on mobile */
+  }
+}
+
+/* Only use will-change when actually animating (reduce paint costs) */
+@media (min-width: 769px) {
+  body::after {
+    will-change: transform, opacity;
   }
 }
 
@@ -282,7 +290,6 @@ app-root::before {
   background: radial-gradient(circle, rgba(90, 92, 140, 0.12) 0%, transparent 70%) !important;
   filter: blur(60px);
   animation: float-light-2 25s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 /* Optimized for mobile - reduced blur and size for better performance */
@@ -292,6 +299,15 @@ app-root::before {
     width: 350px;
     height: 350px;
     opacity: 0.75;
+    animation-duration: 18s;
+    will-change: auto; /* Remove will-change on mobile */
+  }
+}
+
+/* Only use will-change when actually animating (reduce paint costs) */
+@media (min-width: 769px) {
+  app-root::before {
+    will-change: transform, opacity;
   }
 }
 
@@ -316,7 +332,6 @@ app-root::after {
   background: radial-gradient(circle, rgba(90, 92, 140, 0.1) 0%, transparent 70%) !important;
   filter: blur(55px);
   animation: float-light-3 22s ease-in-out infinite;
-  will-change: transform, opacity;
   transform: translate3d(0, 0, 0);
 }
 
@@ -327,6 +342,15 @@ app-root::after {
     width: 280px;
     height: 280px;
     opacity: 0.7;
+    animation-duration: 16s;
+    will-change: auto; /* Remove will-change on mobile */
+  }
+}
+
+/* Only use will-change when actually animating (reduce paint costs) */
+@media (min-width: 769px) {
+  app-root::after {
+    will-change: transform, opacity;
   }
 }
 
@@ -349,7 +373,6 @@ html.dark app-root::after {
   z-index: -11;
   border-radius: 9999px;
   filter: blur(45px);
-  will-change: transform, opacity;
   transform: translate3d(0, 0, 0);
 }
 
@@ -357,6 +380,13 @@ html.dark app-root::after {
 @media (max-width: 768px) {
   .background-orb {
     display: none;
+  }
+}
+
+/* Only use will-change when actually animating (reduce paint costs) */
+@media (min-width: 769px) {
+  .background-orb {
+    will-change: transform, opacity;
   }
 }
 
@@ -539,18 +569,21 @@ html.dark app-root::after {
   }
 }
 
-/* Apply simplified animations on mobile */
+/* Apply simplified animations on mobile - use requestAnimationFrame friendly animations */
 @media (max-width: 768px) {
   body::after {
     animation: float-light-mobile-1 15s ease-in-out infinite;
+    will-change: transform;
   }
 
   app-root::before {
     animation: float-light-mobile-2 18s ease-in-out infinite;
+    will-change: transform;
   }
 
   app-root::after {
     animation: float-light-mobile-3 16s ease-in-out infinite;
+    will-change: transform;
   }
 }
 
