@@ -1,6 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
+interface Feature {
+  iconType: string;
+  title: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-features',
   standalone: true,
@@ -9,7 +15,7 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.dir
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeaturesComponent {
-  features = [
+  readonly features: Feature[] = [
     {
       iconType: 'document',
       title: 'Historiales Clínicos Digitales',

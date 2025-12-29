@@ -12,12 +12,12 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.dir
 export class CTAComponent {
   private router = inject(Router);
 
-  benefits = [
+  readonly benefits: readonly string[] = [
     'Acceso anticipado disponible próximamente',
     'Implementación y capacitación incluidas',
     'Soporte técnico especializado',
     'Migración de datos sin costo'
-  ];
+  ] as const;
 
   goToDownload(): void {
     this.router.navigate(['/descarga']);

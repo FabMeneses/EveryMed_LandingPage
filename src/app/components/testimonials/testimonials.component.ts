@@ -1,6 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
+interface Testimonial {
+  name: string;
+  role: string;
+  rating: number;
+  text: string;
+}
+
 @Component({
   selector: 'app-testimonials',
   standalone: true,
@@ -9,7 +16,7 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.dir
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestimonialsComponent {
-  testimonials = [
+  readonly testimonials: Testimonial[] = [
     {
       name: 'Dr. José Martínez',
       role: 'Médico Individual',

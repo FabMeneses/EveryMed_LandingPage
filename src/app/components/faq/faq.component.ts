@@ -17,7 +17,7 @@ interface FAQ {
 export class FAQComponent {
   openIndex = signal<number | null>(0);
 
-  faqs: FAQ[] = [
+  readonly faqs: readonly FAQ[] = [
     {
       question: '¿Es EveryMed adecuado para médicos individuales?',
       answer: '¡Absolutamente! EveryMed está diseñado para escalar desde médicos independientes hasta grandes centros médicos. Nuestro plan Individual es perfecto para profesionales que trabajan de forma independiente.'

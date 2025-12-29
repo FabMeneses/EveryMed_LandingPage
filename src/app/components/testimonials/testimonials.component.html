@@ -1,6 +1,6 @@
 <section class="py-20 md:py-28 px-4 relative overflow-hidden">
-  <!-- Background decorative elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+  <!-- Background decorative elements - eliminados en móvil -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
     <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#9ca0c7] rounded-full blur-[120px] opacity-10 dark:opacity-20"></div>
     <div class="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#5a5c8c] rounded-full blur-[140px] opacity-10 dark:opacity-20"></div>
   </div>
@@ -25,7 +25,7 @@
       appAnimateOnScroll
       class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll animate-delay-200">
       @for (testimonial of testimonials; track testimonial.name) {
-        <div class="group relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-gray-700/30 overflow-hidden">
+        <div class="group relative bg-white/60 dark:bg-gray-900/60 md:backdrop-blur-xl p-8 rounded-3xl shadow-xl md:hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-gray-700/30 overflow-hidden">
           <!-- Gradient overlay on hover -->
           <div class="absolute inset-0 bg-gradient-to-br from-[#5a5c8c]/5 via-[#9ca0c7]/5 to-[#5a5c8c]/5 dark:from-[#9ca0c7]/10 dark:via-[#5a5c8c]/10 dark:to-[#9ca0c7]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           

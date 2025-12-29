@@ -11,8 +11,6 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.dir
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroComponent {
-  getIcons(): Array<'male' | 'female'> {
-    return ['male', 'female', 'male', 'female'];
-  }
+  readonly icons: Array<'male' | 'female'> = ['male', 'female', 'male', 'female'];
 }
 
