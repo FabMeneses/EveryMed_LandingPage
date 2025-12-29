@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, OnInit, AfterViewInit, OnDestroy, DestroyRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, OnInit, AfterViewInit, OnDestroy, DestroyRef, ElementRef, ViewChild, afterNextRender, signal } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -16,8 +16,13 @@ import { ScrollService } from './services/scroll.service';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, BottomNavComponent],
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.app-loaded]': 'isAppReady()'
+  }
 })
 export class App implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('appContainer', { static: false }) appContainer?: ElementRef<HTMLElement>;
+  
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
@@ -25,6 +30,17 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   private readonly seo = inject(SeoService);
   private readonly analytics = inject(AnalyticsService);
   private readonly scrollService = inject(ScrollService);
+  private readonly elementRef = inject(ElementRef);
+  
+  // Signal para controlar cuando la app está lista
+  protected readonly isAppReady = signal<boolean>(false);
+
+  constructor() {
+    // Usar afterNextRender para asegurar que el DOM esté completamente renderizado
+    afterNextRender(() => {
+      this.markAppAsReady();
+    });
+  }
 
   ngOnInit(): void {
     // Cargar datos estructurados de forma diferida
@@ -63,10 +79,56 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     // Inicializar scroll suave después de que la vista está lista
     this.scrollService.initialize();
+    
+    // Marcar app como lista después de un pequeño delay para asegurar que los estilos se cargaron
+    if (typeof window !== 'undefined') {
+      // Usar requestAnimationFrame para asegurar que el render esté completo
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.markAppAsReady();
+        });
+      });
+    }
   }
 
   ngOnDestroy(): void {
     // Limpiar servicios
     this.scrollService.cleanup();
+  }
+
+  private markAppAsReady(): void {
+    if (typeof window === 'undefined' || this.isAppReady()) return;
+
+    // Esperar a que los estilos estén cargados
+    if (document.readyState === 'complete') {
+      this.finalizeAppReady();
+    } else {
+      window.addEventListener('load', () => {
+        this.finalizeAppReady();
+      }, { once: true });
+    }
+
+    // Fallback: marcar como listo después de un tiempo máximo
+    setTimeout(() => {
+      this.finalizeAppReady();
+    }, 1000);
+  }
+
+  private finalizeAppReady(): void {
+    if (this.isAppReady()) return;
+
+    // Marcar como listo
+    this.isAppReady.set(true);
+
+    // Remover clase de loading del HTML
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.remove('loading');
+      
+      // Agregar clase al elemento raíz
+      const rootElement = this.elementRef.nativeElement as HTMLElement;
+      if (rootElement) {
+        rootElement.classList.add('app-loaded');
+      }
+    }
   }
 }

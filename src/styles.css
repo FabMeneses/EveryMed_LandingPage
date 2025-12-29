@@ -231,36 +231,32 @@ body.dark::before {
 body::after {
   content: '';
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   z-index: -9;
   pointer-events: none;
   top: 15%;
   left: 20%;
-  background: radial-gradient(circle, rgba(90, 92, 140, 0.15) 0%, transparent 70%) !important;
-  filter: blur(50px);
-  animation: float-light-1 20s ease-in-out infinite;
-  transform: translate3d(0, 0, 0);
-  /* Force GPU acceleration */
+  background: radial-gradient(circle, rgba(90, 92, 140, 0.1) 0%, transparent 70%) !important;
+  filter: blur(80px);
+  /* Sin animación para mejor rendimiento */
 }
 
-/* Optimized for mobile - reduced blur and size for better performance */
+/* Optimización móvil - reducir significativamente o deshabilitar orbes */
 @media (max-width: 768px) {
   body::after {
-    filter: blur(20px);
     width: 300px;
     height: 300px;
-    opacity: 0.8;
-    animation-duration: 15s;
-    will-change: auto; /* Remove will-change on mobile */
+    filter: blur(60px);
+    opacity: 0.6;
   }
-}
 
-/* Only use will-change when actually animating (reduce paint costs) */
-@media (min-width: 769px) {
-  body::after {
-    will-change: transform, opacity;
+  /* Deshabilitar completamente en móviles pequeños */
+  @media (max-width: 480px) {
+    body::after {
+      display: none;
+    }
   }
 }
 
@@ -279,35 +275,32 @@ body.dark::after {
 app-root::before {
   content: '';
   position: fixed;
-  width: 700px;
-  height: 700px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   z-index: -9;
   pointer-events: none;
   top: 50%;
   right: 20%;
-  transform: translateY(-50%) translate3d(0, 0, 0);
-  background: radial-gradient(circle, rgba(90, 92, 140, 0.12) 0%, transparent 70%) !important;
-  filter: blur(60px);
-  animation: float-light-2 25s ease-in-out infinite;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(90, 92, 140, 0.08) 0%, transparent 70%) !important;
+  filter: blur(80px);
+  /* Sin animación para mejor rendimiento */
 }
 
-/* Optimized for mobile - reduced blur and size for better performance */
+/* Optimización móvil */
 @media (max-width: 768px) {
   app-root::before {
-    filter: blur(25px);
-    width: 350px;
-    height: 350px;
-    opacity: 0.75;
-    animation-duration: 18s;
-    will-change: auto; /* Remove will-change on mobile */
+    width: 300px;
+    height: 300px;
+    filter: blur(60px);
+    opacity: 0.5;
   }
-}
 
-/* Only use will-change when actually animating (reduce paint costs) */
-@media (min-width: 769px) {
-  app-root::before {
-    will-change: transform, opacity;
+  @media (max-width: 480px) {
+    app-root::before {
+      display: none;
+    }
   }
 }
 
@@ -322,35 +315,31 @@ html.dark app-root::before {
 app-root::after {
   content: '';
   position: fixed;
-  width: 550px;
-  height: 550px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   z-index: -9;
   pointer-events: none;
   bottom: 15%;
   left: 60%;
-  background: radial-gradient(circle, rgba(90, 92, 140, 0.1) 0%, transparent 70%) !important;
-  filter: blur(55px);
-  animation: float-light-3 22s ease-in-out infinite;
-  transform: translate3d(0, 0, 0);
+  background: radial-gradient(circle, rgba(90, 92, 140, 0.08) 0%, transparent 70%) !important;
+  filter: blur(80px);
+  /* Sin animación para mejor rendimiento */
 }
 
-/* Optimized for mobile - reduced blur and size for better performance */
+/* Optimización móvil */
 @media (max-width: 768px) {
   app-root::after {
-    filter: blur(22px);
     width: 280px;
     height: 280px;
-    opacity: 0.7;
-    animation-duration: 16s;
-    will-change: auto; /* Remove will-change on mobile */
+    filter: blur(60px);
+    opacity: 0.5;
   }
-}
 
-/* Only use will-change when actually animating (reduce paint costs) */
-@media (min-width: 769px) {
-  app-root::after {
-    will-change: transform, opacity;
+  @media (max-width: 480px) {
+    app-root::after {
+      display: none;
+    }
   }
 }
 
@@ -366,240 +355,18 @@ html.dark app-root::after {
    Orbes adicionales repartidos por la pantalla
    ========================================================= */
 
-/* Orbes adicionales repartidos por la pantalla */
+
 .background-orb {
-  position: fixed;
-  pointer-events: none;
-  z-index: -11;
-  border-radius: 9999px;
-  filter: blur(45px);
-  transform: translate3d(0, 0, 0);
+  display: none;
 }
 
-/* Completely disable extra orbs on mobile for performance */
-@media (max-width: 768px) {
-  .background-orb {
-    display: none;
-  }
-}
-
-/* Only use will-change when actually animating (reduce paint costs) */
-@media (min-width: 769px) {
-  .background-orb {
-    will-change: transform, opacity;
-  }
-}
-
-.background-orb-top-right {
-  width: 400px;
-  height: 400px;
-  top: 6%;
-  right: 4%;
-  background: radial-gradient(circle, rgba(90, 92, 140, 0.16) 0%, transparent 70%);
-  animation: float-light-2 26s ease-in-out infinite;
-}
-
-@media (max-width: 768px) {
-  .background-orb-top-right {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-.background-orb-bottom-left {
-  width: 350px;
-  height: 350px;
-  bottom: 4%;
-  left: 4%;
-  background: radial-gradient(circle, rgba(90, 92, 140, 0.12) 0%, transparent 70%);
-  animation: float-light-3 28s ease-in-out infinite;
-}
-
-@media (max-width: 768px) {
-  .background-orb-bottom-left {
-    width: 220px;
-    height: 220px;
-  }
-}
-
-/* =========================================================
-   Animaciones para los orbes adicionales repartidos por la pantalla
-   ========================================================= */
-
-@keyframes float-light-1 {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.95;
-  }
-
-  20% {
-    transform: translate(60px, -50px) scale(1.12);
-    opacity: 0.9;
-  }
-
-  40% {
-    transform: translate(-40px, 40px) scale(0.96);
-    opacity: 0.85;
-  }
-
-  60% {
-    transform: translate(30px, 10px) scale(1.08);
-    opacity: 0.9;
-  }
-
-  80% {
-    transform: translate(-20px, -35px) scale(0.98);
-    opacity: 0.88;
-  }
-
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.95;
-  }
-}
-
-@keyframes float-light-2 {
-  0% {
-    transform: translateY(-50%) translate(0, 0) scale(1);
-    opacity: 0.95;
-  }
-
-  20% {
-    transform: translateY(-50%) translate(-55px, 25px) scale(1.08) rotate(1deg);
-    opacity: 0.88;
-  }
-
-  40% {
-    transform: translateY(-50%) translate(25px, -35px) scale(0.94) rotate(-0.5deg);
-    opacity: 0.82;
-  }
-
-  60% {
-    transform: translateY(-50%) translate(-35px, 10px) scale(1.06);
-    opacity: 0.9;
-  }
-
-  80% {
-    transform: translateY(-50%) translate(45px, -15px) scale(0.97);
-    opacity: 0.87;
-  }
-
-  100% {
-    transform: translateY(-50%) translate(0, 0) scale(1);
-    opacity: 0.95;
-  }
-}
-
-@keyframes float-light-3 {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.95;
-  }
-
-  20% {
-    transform: translate(45px, 55px) scale(1.14);
-    opacity: 0.9;
-  }
-
-  40% {
-    transform: translate(-50px, -35px) scale(0.9);
-    opacity: 0.78;
-  }
-
-  60% {
-    transform: translate(25px, 30px) scale(1.05);
-    opacity: 0.88;
-  }
-
-  80% {
-    transform: translate(-35px, -45px) scale(0.93);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.95;
-  }
-}
-
-/* =========================================================
-   Simplified animations for mobile devices
-   ========================================================= */
-
-/* Simplified animation for mobile - only 3 keyframes, no scale */
-@keyframes float-light-mobile-1 {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-    opacity: 0.8;
-  }
-
-  50% {
-    transform: translate(30px, -25px);
-    opacity: 0.7;
-  }
-}
-
-@keyframes float-light-mobile-2 {
-
-  0%,
-  100% {
-    transform: translateY(-50%) translate(0, 0);
-    opacity: 0.75;
-  }
-
-  50% {
-    transform: translateY(-50%) translate(-30px, 15px);
-    opacity: 0.65;
-  }
-}
-
-@keyframes float-light-mobile-3 {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-    opacity: 0.7;
-  }
-
-  50% {
-    transform: translate(20px, 20px);
-    opacity: 0.6;
-  }
-}
-
-/* Apply simplified animations on mobile - use requestAnimationFrame friendly animations */
-@media (max-width: 768px) {
-  body::after {
-    animation: float-light-mobile-1 15s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  app-root::before {
-    animation: float-light-mobile-2 18s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  app-root::after {
-    animation: float-light-mobile-3 16s ease-in-out infinite;
-    will-change: transform;
-  }
-}
+/* Keyframes de animaciones eliminados - ya no se utilizan para mejor rendimiento */
 
 /* =========================================================
    Accessibility - Disable animations for users who prefer reduced motion
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
-  body::after,
-  app-root::before,
-  app-root::after,
-  .background-orb {
-    animation: none !important;
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 /* =========================================================
@@ -774,38 +541,7 @@ body.dark * {
   transform: translateY(0);
 }
 
-.animate-fade-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.animate-fade-left.animate-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.animate-fade-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.animate-fade-right.animate-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.animate-scale-up {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-scale-up.animate-visible {
-  opacity: 1;
-  transform: scale(1);
-}
+/* Estilos de animación eliminados - no se utilizan en la aplicación */
 
 .animate-fade-in {
   opacity: 0;
@@ -849,14 +585,58 @@ body.dark * {
   transition-delay: 0.8s;
 }
 
+/* Optimización móvil - deshabilitar animate-pulse para mejor rendimiento */
+@media (max-width: 768px) {
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  /* Reducir blur significativamente en móvil - solo para elementos decorativos (orbs de fondo) */
+  div[class*="absolute"][class*="rounded-full"][class*="blur-"] {
+    filter: blur(40px) !important;
+  }
+
+  div[class*="absolute"][class*="rounded-full"][class*="blur-\[80px\]"],
+  div[class*="absolute"][class*="rounded-full"][class*="blur-\[100px\]"] {
+    filter: blur(50px) !important;
+  }
+
+  div[class*="absolute"][class*="rounded-full"][class*="blur-\[120px\]"] {
+    filter: blur(60px) !important;
+  }
+
+  div[class*="absolute"][class*="rounded-full"][class*="blur-\[140px\]"],
+  div[class*="absolute"][class*="rounded-full"][class*="blur-\[150px\]"] {
+    filter: blur(70px) !important;
+  }
+
+  /* Reducir backdrop-blur en móvil - solo en elementos con backdrop */
+  [class*="backdrop-blur"]:not(section):not(header):not(footer):not(nav) {
+    backdrop-filter: blur(4px) !important;
+  }
+
+  [class*="backdrop-blur-xl"]:not(section):not(header):not(footer):not(nav) {
+    backdrop-filter: blur(6px) !important;
+  }
+
+  [class*="backdrop-blur-md"]:not(section):not(header):not(footer):not(nav) {
+    backdrop-filter: blur(4px) !important;
+  }
+}
+
+/* Optimización adicional para móviles pequeños - solo elementos decorativos */
+@media (max-width: 480px) {
+  /* Reducir aún más backdrop-blur - excluir componentes principales */
+  [class*="backdrop-blur"]:not(section):not(header):not(footer):not(nav):not([class*="bg-white"]):not([class*="bg-gray"]) {
+    backdrop-filter: blur(2px) !important;
+  }
+}
+
 /* Reducir movimiento para usuarios que lo prefieren */
 @media (prefers-reduced-motion: reduce) {
 
   .animate-on-scroll,
   .animate-fade-up,
-  .animate-fade-left,
-  .animate-fade-right,
-  .animate-scale-up,
   .animate-fade-in {
     opacity: 1;
     transform: none;
@@ -883,3 +663,4 @@ body.dark * {
     padding-bottom: 0 !important;
   }
 }
+
