@@ -34,6 +34,9 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   
   // Signal para controlar cuando la app está lista
   protected readonly isAppReady = signal<boolean>(false);
+  
+  // Signal para detectar si estamos en la página de equipo
+  protected readonly isEquipoPage = signal<boolean>(false);
 
   constructor() {
     // Usar afterNextRender para asegurar que el DOM esté completamente renderizado
@@ -43,6 +46,9 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Detectar ruta inicial
+    this.isEquipoPage.set(this.router.url === '/conocenos/equipo');
+    
     // Cargar datos estructurados de forma diferida
     this.seo.loadStructuredData();
 
@@ -57,6 +63,9 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe((event: NavigationEnd) => {
         const url = event.urlAfterRedirects;
+
+        // Detectar si estamos en la página de equipo
+        this.isEquipoPage.set(url === '/conocenos/equipo');
 
         // Reiniciar scroll si es una ruta de legal, conocenos o demo
         if (url.startsWith('/legal/') || url.startsWith('/conocenos/') || url.startsWith('/demo')) {

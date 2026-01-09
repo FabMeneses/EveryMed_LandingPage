@@ -1,15 +1,21 @@
 <div class="min-h-screen flex flex-col relative overflow-x-hidden">
   <!-- Header - fixed en móvil, sticky en escritorio -->
-  <app-header />
+  @if (!isEquipoPage()) {
+    <app-header />
+  }
 
   <!-- Contenido por encima del gradiente - con padding para header y bottom nav -->
-  <div class="relative z-10 flex flex-col grow pt-14 sm:pt-16 md:pt-16 content-with-bottom-nav">
+  <div class="relative z-10 flex flex-col grow" [class.pt-14]="!isEquipoPage()" [class.sm:pt-16]="!isEquipoPage()" [class.md:pt-16]="!isEquipoPage()" [class.content-with-bottom-nav]="!isEquipoPage()">
     <main class="grow flex flex-col">
       <router-outlet />
     </main>
-    <app-footer />
+    @if (!isEquipoPage()) {
+      <app-footer />
+    }
   </div>
 
   <!-- Bottom Navigation - solo visible en móvil -->
-  <app-bottom-nav />
+  @if (!isEquipoPage()) {
+    <app-bottom-nav />
+  }
 </div>

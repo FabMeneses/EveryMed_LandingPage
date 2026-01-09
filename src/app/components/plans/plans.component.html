@@ -38,7 +38,7 @@
     @if (planActivo() === 'Individual') {
       <div 
         appAnimateOnScroll
-        class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-6 items-stretch justify-items-center animate-on-scroll animate-delay-300 max-w-4xl mx-auto">
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 items-stretch justify-items-center animate-on-scroll animate-delay-300 max-w-6xl mx-auto">
         <div class="animate-fade-in-up w-full md:w-full h-full" style="animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards;">
           <app-plan-card
             [titulo]="'Gratis'"
@@ -48,8 +48,9 @@
             [descripcion]="'Comienza sin costo'"
             [caracteristicas]="caracteristicasPlanGratis"
             [complementos]="complementosPlanGratis"
-            [textoBoton]="'Próximamente'"
-            [botonDeshabilitado]="true"
+            [textoBoton]="'Comenzar ahora'"
+            [botonDeshabilitado]="false"
+            [urlRedireccion]="'https://administracion.everymed.online/'"
             [iconoTipo]="'gratis'"
           />
         </div>
@@ -69,6 +70,22 @@
             [textoBoton]="'Próximamente'"
             [botonDeshabilitado]="true"
             [iconoTipo]="'individual'"
+          />
+        </div>
+
+        <div class="animate-fade-in-up w-full md:w-full h-full" style="animation-delay: 0.5s; opacity: 0; animation-fill-mode: forwards;">
+          <app-plan-card
+            [titulo]="'POS'"
+            [subtitulo]="'Farmacia'"
+            [precioBase]="79"
+            [precioTexto]="'$79'"
+            [periodo]="'/mes'"
+            [descripcion]="'Únicamente el servicio de venta y administración para tu farmacia'"
+            [caracteristicas]="caracteristicasPlanPOS"
+            [complementos]="complementosPlanPOS"
+            [textoBoton]="'Próximamente'"
+            [botonDeshabilitado]="true"
+            [iconoTipo]="'pos'"
           />
         </div>
       </div>

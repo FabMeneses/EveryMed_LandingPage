@@ -10,7 +10,7 @@
       <div
         class="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] md:w-[500px] md:h-[500px] sm:w-72 sm:h-72 bg-[#9ca0c7] rounded-full blur-[140px] md:blur-[140px] sm:blur-[90px] opacity-5 sm:opacity-20 dark:sm:opacity-30"></div>
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[600px] md:h-[600px] sm:w-80 sm:h-80 bg-linear-to-br from-[#5a5c8c]/10 to-primary-dark/10 rounded-full blur-[150px] md:blur-[150px] sm:blur-[100px] opacity-30 opacity-5 sm:opacity-30 hidden sm:block">
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[600px] md:h-[600px] sm:w-80 sm:h-80 bg-gradient-to-br from-[#5a5c8c]/10 to-[#9ca0c7]/10 rounded-full blur-[150px] md:blur-[150px] sm:blur-[100px] opacity-30 opacity-5 sm:opacity-30 hidden sm:block">
       </div>
 
       <!-- Grid pattern overlay -->
@@ -20,14 +20,12 @@
     </div>
 
     <div class="max-w-6xl mx-auto relative z-10 w-full">
-      <div class="text-center mb-20 appAnimateOnScroll animate-on-scroll">
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-          <span class="bg-linear-to-r from-[#5a5c8c] via-primary-dark to-[#5a5c8c] bg-clip-text text-transparent drop-shadow-lg">
-            Accede a EveryMed
-          </span>
+      <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white">
+          Comienza ahora
         </h1>
         <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium">
-          Gestiona tu práctica médica desde cualquier dispositivo. Elige la plataforma que mejor se adapte a ti.
+          Accede a la plataforma desde cualquier dispositivo. Elige la opción que mejor se adapte a ti.
         </p>
       </div>
 
@@ -39,20 +37,23 @@
             class="group relative bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 p-8 border border-gray-200 dark:border-gray-800 overflow-hidden animate-on-scroll cursor-pointer"
             [style.animation-delay]="(i * 0.1) + 's'">
             <!-- Gradient border effect -->
-            <div class="absolute inset-0 bg-linear-to-br from-[#5a5c8c]/10 to-primary-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-[#5a5c8c]/10 to-[#9ca0c7]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
 
             <div class="relative z-10 text-center space-y-4">
-              <div class="text-7xl mb-4 transform group-hover:scale-125 transition-all duration-300 group-hover:rotate-12">{{ option.icon }}</div>
-              <h3 class="text-2xl font-bold bg-linear-to-r from-[#5a5c8c] to-primary-dark bg-clip-text text-transparent group-hover:scale-105 transform transition-transform duration-300 origin-center">{{ option.platform }}</h3>
-              <p class="text-gray-600 dark:text-gray-400 min-h-12 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">{{ option.description }}</p>
+              <h3 class="text-4xl md:text-5xl font-bold text-[#5a5c8c] dark:text-[#9ca0c7] group-hover:scale-105 transform transition-transform duration-300 origin-center mb-2">
+                {{ option.platform }}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 min-h-12 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
+                {{ option.description }}
+              </p>
               @if (!isDisabled(option.platform)) {
                 <a
                   [href]="option.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-block bg-linear-to-r from-[#5a5c8c] to-primary-dark text-white px-8 py-3 rounded-xl hover:shadow-lg hover:shadow-[#5a5c8c]/50 transition-all duration-300 font-semibold transform hover:scale-110 hover:-translate-y-1 relative group/btn overflow-hidden">
+                  class="inline-block bg-gradient-to-r from-[#5a5c8c] to-[#9ca0c7] text-white px-8 py-3 rounded-xl hover:shadow-lg hover:shadow-[#5a5c8c]/50 transition-all duration-300 font-semibold transform hover:scale-110 hover:-translate-y-1 relative group/btn overflow-hidden">
                   <span class="relative z-10">{{ option.ctaText }}</span>
-                  <div class="absolute inset-0 bg-linear-to-r from-primary-dark to-[#5a5c8c] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                  <div class="absolute inset-0 bg-gradient-to-r from-[#9ca0c7] to-[#5a5c8c] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                 </a>
               } @else {
                 <button
@@ -70,8 +71,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         <div
           appAnimateOnScroll
-          class="bg-linear-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#5a5c8c]/20 rounded-2xl p-8 border border-[#5a5c8c]/20 dark:border-[#5a5c8c]/30 animate-on-scroll">
-          <h3 class="text-2xl font-bold text-[#5a5c8c] dark:text-primary-dark mb-6">Ventajas de acceso múltiple</h3>
+          class="bg-gradient-to-br from-[#5a5c8c]/10 to-transparent dark:from-[#5a5c8c]/20 rounded-2xl p-8 border border-[#5a5c8c]/20 dark:border-[#5a5c8c]/30 animate-on-scroll">
+          <h3 class="text-2xl font-bold text-[#5a5c8c] dark:text-[#9ca0c7] mb-6">Ventajas de acceso múltiple</h3>
           <ul class="space-y-3">
             <li class="flex items-start gap-3">
               <span class="text-[#5a5c8c] text-xl font-bold shrink-0">✓</span>
@@ -94,8 +95,8 @@
 
         <div
           appAnimateOnScroll
-          class="bg-linear-to-br from-primary-dark/10 to-transparent dark:from-primary-dark/20 rounded-2xl p-8 border border-primary-dark/20 dark:border-primary-dark/30 animate-on-scroll">
-          <h3 class="text-2xl font-bold text-primary-dark dark:text-[#b8bce8] mb-6">Requisitos del sistema</h3>
+          class="bg-gradient-to-br from-[#9ca0c7]/10 to-transparent dark:from-[#9ca0c7]/20 rounded-2xl p-8 border border-[#9ca0c7]/20 dark:border-[#9ca0c7]/30 animate-on-scroll">
+          <h3 class="text-2xl font-bold text-[#9ca0c7] dark:text-[#9ca0c7] mb-6">Requisitos del sistema</h3>
           <div class="space-y-4">
             <div>
               <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Web</h4>
@@ -116,7 +117,7 @@
       <!-- Support Section -->
       <div
         appAnimateOnScroll
-        class="bg-linear-to-r from-[#5a5c8c] via-primary-dark to-[#5a5c8c] rounded-3xl p-12 md:p-16 shadow-2xl relative overflow-hidden animate-on-scroll">
+        class="bg-gradient-to-r from-[#5a5c8c] via-[#9ca0c7] to-[#5a5c8c] rounded-3xl p-12 md:p-16 shadow-2xl relative overflow-hidden animate-on-scroll">
         <!-- Decorative elements -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
@@ -128,17 +129,21 @@
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a
-              href="mailto:everymed@everymed.com"
+              href="mailto:everymed@everymed.online"
               class="inline-flex items-center gap-2 bg-white text-[#5a5c8c] px-8 py-3 rounded-xl hover:bg-white/95 transition-all font-semibold hover:shadow-lg hover:shadow-white/50 transform hover:scale-110 hover:-translate-y-1 duration-300 group/email">
-              <span class="group-hover/email:rotate-12 transition-transform duration-300 inline-block">✉</span>
-              everymed@everymed.com
+              <svg class="w-5 h-5 group-hover/email:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              everymed@everymed.online
             </a>
             <a
               href="https://wa.me/527714315837"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 bg-white/20 text-white px-8 py-3 rounded-xl hover:bg-white/30 transition-all font-semibold border border-white/30 hover:shadow-lg hover:shadow-white/20 transform hover:scale-110 hover:-translate-y-1 duration-300 group/ws">
-              <span class="group-hover/ws:rotate-12 transition-transform duration-300 inline-block">💬</span>
+              <svg class="w-5 h-5 group-hover/ws:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.369 1.262.59 1.694.755.712.27 1.36.232 1.871.141.571-.099 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
               WhatsApp
             </a>
           </div>

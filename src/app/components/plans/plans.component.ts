@@ -39,9 +39,15 @@ export class PlansComponent {
 
   complementosPlanIndividual: ComplementoPlan[] = [
     { texto: 'POS Farmacia', precio: 30, tipoIcono: 'farmacia' },
-    { texto: 'Chat interno de la clínica', precio: 25, tipoIcono: 'chat-interno' },
-    { texto: 'Chat con los pacientes', precio: 20, tipoIcono: 'chat' },
   ];
+
+  caracteristicasPlanPOS: CaracteristicaPlan[] = [
+    { texto: 'Sin anuncios - Experiencia premium', destacada: true },
+    { texto: 'Gestión de inventario completo' },
+    { texto: 'Punto de compra y venta' },
+  ];
+
+  complementosPlanPOS: ComplementoPlan[] = [];
 
   caracteristicasClinicaPequena: CaracteristicaPlan[] = [
     { texto: 'Sin anuncios - Experiencia premium', destacada: true },
@@ -55,8 +61,6 @@ export class PlansComponent {
 
   complementosClinicaPequena: ComplementoPlan[] = [
     { texto: 'POS Farmacia', precio: 40, tipoIcono: 'farmacia' },
-    { texto: 'Chat interno de la clínica', precio: 35, tipoIcono: 'chat-interno' },
-    { texto: 'Chat con los pacientes', precio: 30, tipoIcono: 'chat' },
   ];
 
   caracteristicasClinicaMediana: CaracteristicaPlan[] = [
@@ -72,8 +76,6 @@ export class PlansComponent {
 
   complementosClinicaMediana: ComplementoPlan[] = [
     { texto: 'POS Farmacia', precio: 50, tipoIcono: 'farmacia' },
-    { texto: 'Chat interno de la clínica', precio: 45, tipoIcono: 'chat-interno' },
-    { texto: 'Chat con los pacientes', precio: 40, tipoIcono: 'chat' },
   ];
 
   caracteristicasClinicaGrande: CaracteristicaPlan[] = [
@@ -89,8 +91,6 @@ export class PlansComponent {
 
   complementosClinicaGrande: ComplementoPlan[] = [
     { texto: 'POS Farmacia', precio: 60, tipoIcono: 'farmacia' },
-    { texto: 'Chat interno de la clínica', precio: 55, tipoIcono: 'chat-interno' },
-    { texto: 'Chat con los pacientes', precio: 50, tipoIcono: 'chat' },
   ];
 
   caracteristicasEnterprise: CaracteristicaPlan[] = [
@@ -104,11 +104,7 @@ export class PlansComponent {
     { texto: 'Consultoría estratégica' },
   ];
 
-  complementosEnterprise: ComplementoPlan[] = [
-    { texto: 'Todos los complementos incluidos', precio: 0, tipoIcono: 'incluido' },
-    { texto: 'Desarrollo personalizado', precio: 0, tipoIcono: 'desarrollo' },
-    { texto: 'Soporte 24/7 dedicado', precio: 0, tipoIcono: 'soporte' },
-  ];
+  complementosEnterprise: ComplementoPlan[] = [];
 
   alCambiarPlan(plan: TipoPlan | string): void {
     this.planActivo.set(plan as TipoPlan);

@@ -52,6 +52,7 @@ export class PlanCardComponent {
   esDestacado = input<boolean>(false);
   textoBoton = input<string>('Próximamente');
   botonDeshabilitado = input<boolean>(true);
+  urlRedireccion = input<string>('');
   iconoTipo = input<'individual' | 'empresa' | 'pos' | 'premium' | 'gratis'>('individual');
 
   complementosSeleccionados = signal<Set<number>>(new Set());
@@ -97,6 +98,13 @@ export class PlanCardComponent {
 
   estaSeleccionado(index: number): boolean {
     return this.complementosSeleccionados().has(index);
+  }
+
+  onBotonClick(): void {
+    const url = this.urlRedireccion();
+    if (url && !this.botonDeshabilitado()) {
+      window.location.href = url;
+    }
   }
 }
 

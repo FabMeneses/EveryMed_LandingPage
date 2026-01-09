@@ -40,9 +40,19 @@ export class HeaderComponent {
     } else {
       // Not on home page, navigate to it with optional fragment
       if (sectionId) {
-        this.router.navigate([targetUrl], { fragment: sectionId });
+        this.router.navigate([targetUrl], { fragment: sectionId }).then(() => {
+          // Wait for navigation and DOM to be ready, then scroll
+          // Angular may handle the fragment automatically, but we ensure it works
+          setTimeout(() => {
+            this.scrollToSection(sectionId);
+          }, 200);
+        });
       } else {
-        this.router.navigate([targetUrl]);
+        this.router.navigate([targetUrl]).then(() => {
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 100);
+        });
       }
     }
   }
@@ -51,9 +61,28 @@ export class HeaderComponent {
    * Scroll to section by ID
    */
   private scrollToSection(sectionId: string): void {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Try multiple times in case DOM is not ready yet
+    let attempts = 0;
+    const maxAttempts = 10;
+    
+    const tryScroll = () => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Add offset for fixed header
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        setTimeout(tryScroll, 50);
+      }
+    };
+    
+    tryScroll();
   }
 }
