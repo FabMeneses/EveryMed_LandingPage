@@ -337,7 +337,9 @@
                 }
             </div>
 
-            <button [disabled]="botonDeshabilitado()"
+            <button 
+                [disabled]="botonDeshabilitado()"
+                (click)="onBotonClick()"
                 class="w-full h-11 rounded-2xl font-bold text-sm tracking-wide transition-all duration-300 transform cursor-pointer hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#5a5c8c] to-[#9ca0c7] dark:from-[#9ca0c7] dark:to-[#5a5c8c] hover:from-[#5a5c8c] hover:to-[#9ca0c7] text-white shadow-lg shadow-[#5a5c8c]/30 dark:shadow-[#9ca0c7]/30 hover:shadow-xl hover:shadow-[#5a5c8c]/50 dark:hover:shadow-[#9ca0c7]/50 disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0">
                 {{ textoBoton() }}
             </button>

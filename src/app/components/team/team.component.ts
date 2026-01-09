@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TeamComponent {
   company = {
-    name: 'EverySoftware',
+    name: 'Falcode',
     description: 'Empresa especializada en desarrollo de software médico y soluciones tecnológicas para todo sector.'
   };
 

@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AnimateOnScrollDirective } from '../../../directives/animate-on-scroll.directive';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-equipo',
@@ -10,8 +11,11 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EquipoComponent {
+  private router = inject(Router);
+  readonly currentYear = new Date().getFullYear();
+  
   company = {
-    name: 'EverySoftware',
+    name: 'Falcode',
     description: 'Empresa especializada en desarrollo de software médico y soluciones tecnológicas para todo sector.'
   };
 
@@ -33,5 +37,9 @@ export class EquipoComponent {
       avatar: 'AS'
     }
   ];
+
+  navigateToHome(): void {
+    this.router.navigate(['/']);
+  }
 }
 

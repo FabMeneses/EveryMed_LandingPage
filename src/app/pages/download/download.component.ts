@@ -27,21 +27,18 @@ export class DownloadComponent implements OnInit {
     {
       platform: 'Web',
       description: 'Accede desde cualquier navegador sin instalación',
-      icon: '🌐',
       link: 'https://administracion.everymed.online',
       ctaText: 'Ir a la App'
     },
     {
       platform: 'iOS',
       description: 'Descarga desde App Store para iPhone y iPad',
-      icon: '🍎',
       link: 'https://apps.apple.com/mx/app/everymed',
       ctaText: 'Próximamente'
     },
     {
       platform: 'Android',
       description: 'Descarga el APK o espera en Google Play Store',
-      icon: '🤖',
       link: 'https://everymed.online/download/everymed.apk',
       ctaText: 'Próximamente'
     }
