@@ -32,7 +32,6 @@
 
   <!-- Additional SEO -->
   <meta name="application-name" content="EveryMed">
-  <meta name="apple-mobile-web-app-title" content="EveryMed">
   <meta name="classification" content="Healthcare, Medical Software">
   <meta name="rating" content="General">
 
@@ -55,12 +54,12 @@
   <meta property="og:title" content="EveryMed - Plataforma Integral de Gestión Médica">
   <meta property="og:description"
     content="Plataforma integral de gestión médica diseñada para médicos individuales, clínicas pequeñas y grandes centros de salud. Gestiona historiales clínicos, citas, recetas y más desde un solo lugar.">
-  <meta property="og:image" content="https://everymed-landing.everymed.online/favicon.png">
-  <meta property="og:image:secure_url" content="https://everymed-landing.everymed.online/favicon.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="EveryMed - Logo de Plataforma de Gestión Médica">
+  <meta property="og:image" content="https://everymed-landing.everymed.online/assets/images-webp/demo/dashboard_claro.webp">
+  <meta property="og:image:secure_url" content="https://everymed-landing.everymed.online/assets/images-webp/demo/dashboard_claro.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:alt" content="EveryMed - Panel de control de la plataforma de gestión médica">
   <meta property="og:locale" content="es_MX">
   <meta property="og:locale:alternate" content="es_ES">
 
@@ -72,8 +71,8 @@
   <meta name="twitter:title" content="EveryMed - Plataforma Integral de Gestión Médica">
   <meta name="twitter:description"
     content="Plataforma integral de gestión médica diseñada para médicos individuales, clínicas pequeñas y grandes centros de salud. Gestiona historiales clínicos, citas, recetas y más desde un solo lugar.">
-  <meta name="twitter:image" content="https://everymed-landing.everymed.online/favicon.png">
-  <meta name="twitter:image:alt" content="EveryMed - Logo de Plataforma de Gestión Médica">
+  <meta name="twitter:image" content="https://everymed-landing.everymed.online/assets/images-webp/demo/dashboard_claro.webp">
+  <meta name="twitter:image:alt" content="EveryMed - Panel de control de la plataforma de gestión médica">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://everymed-landing.everymed.online/">
@@ -96,21 +95,17 @@
 
   <!-- Critical inline styles to prevent FOUC -->
   <style>
-    /* Ocultar contenido hasta que Angular esté listo */
+    /* Ocultar visualmente hasta que Angular esté listo (sin display:none para no romper crawlers) */
     app-root:not(.app-loaded) {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
+      opacity: 0;
     }
-    
+
     /* Mostrar contenido cuando esté listo */
     app-root.app-loaded {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
+      opacity: 1;
       transition: opacity 0.2s ease-in;
     }
-    
+
     /* Prevenir scroll durante la carga */
     html.loading,
     html.loading body {
@@ -125,7 +120,7 @@
   <script>
     // Añadir clase loading al HTML para prevenir scroll durante la carga
     document.documentElement.classList.add('loading');
-    
+
     // Asegurar que los estilos críticos se apliquen inmediatamente
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function() {
