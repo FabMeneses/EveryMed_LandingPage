@@ -19,10 +19,12 @@ export class SeoService {
 
   applyRouteSeo(data: { title?: string; description?: string; ogImage?: string; robots?: string } = {}): void {
     const siteName = 'EveryMed';
+    const baseUrl = 'https://everymed-landing.everymed.online';
     const title = data.title || 'EveryMed — Plataforma Integral de Gestión Médica';
     const description = data.description || 'Plataforma integral de gestión médica para médicos y clínicas. Historiales clínicos digitales, agenda, equipo y cumplimiento HIPAA.';
-    const ogImage = data.ogImage || 'https://everymed-landingpage.vercel.app/assets/icons-app/everymed-icon/logo-everymed-claro.svg';
+    const ogImage = data.ogImage || `${baseUrl}/assets/images-webp/demo/dashboard_claro.webp`;
     const robots = data.robots || 'index, follow';
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : baseUrl;
 
     this.title.setTitle(title);
 
@@ -34,8 +36,11 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:site_name', content: siteName });
     this.meta.updateTag({ property: 'og:image', content: ogImage });
+    this.meta.updateTag({ property: 'og:url', content: currentUrl });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
 
     // Twitter
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
     this.meta.updateTag({ name: 'twitter:image', content: ogImage });
@@ -43,7 +48,7 @@ export class SeoService {
 
   private upsertCanonical(href: string): void {
     if (!isPlatformBrowser(this.platformId)) return;
-    
+
     const head = document.head || document.getElementsByTagName('head')[0];
     if (!head) return;
 
@@ -164,14 +169,6 @@ export class SeoService {
         url: 'https://everymed-landing.everymed.online',
         description: 'Plataforma integral de gestión médica para médicos y clínicas',
         inLanguage: 'es-MX',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: 'https://everymed-landing.everymed.online/?s={search_term_string}'
-          },
-          'query-input': 'required name=search_term_string'
-        },
         publisher: {
           '@type': 'Organization',
           name: 'EveryMed',
