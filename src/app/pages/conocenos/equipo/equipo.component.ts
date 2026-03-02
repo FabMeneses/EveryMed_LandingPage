@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 export class EquipoComponent {
   private router = inject(Router);
   readonly currentYear = new Date().getFullYear();
-  
+
   company = {
-    name: 'Falcode',
+    name: 'FALCodeX',
     description: 'Empresa especializada en desarrollo de software médico y soluciones tecnológicas para todo sector.'
   };
 

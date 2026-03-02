@@ -51,8 +51,8 @@ export const routes: Routes = [
     path: 'conocenos/equipo',
     loadComponent: () => import('./pages/conocenos/equipo/equipo.component').then(m => m.EquipoComponent),
     data: {
-      title: 'Nuestro Equipo - EveryMed | Conoce a Falcode',
-      description: 'Conoce al equipo de Falcode, los desarrolladores detrás de EveryMed. Especialistas en software médico y soluciones tecnológicas para el sector salud.',
+      title: 'Nuestro Equipo - EveryMed | Conoce a FALCodeX',
+      description: 'Conoce al equipo de FALCodeX, los desarrolladores detrás de EveryMed. Especialistas en software médico y soluciones tecnológicas para el sector salud.',
       robots: 'index, follow'
     }
   },
